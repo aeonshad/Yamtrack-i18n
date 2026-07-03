@@ -1,0 +1,167 @@
+# Yamtrack French translations
+# Copyright (C) 2026 Aeonshad
+# This file is distributed under the same license as the PACKAGE package.
+# Aeonshad, 2026
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Yamtrack\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-03 13:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Aeonshad\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/users/preferences.html:7
+msgid "Preferences - Yamtrack"
+msgstr "Préférences - Yamtrack"
+
+#: templates/users/preferences.html:14
+msgid "Preferences"
+msgstr "Préférences"
+
+#: templates/users/preferences.html:16
+msgid "Customize the look and behavior of the application."
+msgstr "Personnalisez l'apparence et le fonctionnement de l'application."
+
+#: templates/users/preferences.html:24
+msgid "Language"
+msgstr "Langue"
+
+#: templates/users/preferences.html:27
+msgid "Select the interface language. The site will remember your choice."
+msgstr "Sélectionnez la langue d'affichage. Le site mémorisera votre choix."
+
+#: templates/users/preferences.html:51
+msgid "Hide Hover Overlay on Touch Devices"
+msgstr "Masquer la fenêtre contextuelle au survol sur les appareils tactiles"
+
+#: templates/users/preferences.html:54
+msgid ""
+"Hide the media card hover overlay with action buttons on touch devices for a "
+"cleaner mobile experience. On desktop, the overlay will still appear when "
+"you hover your mouse over media cards."
+msgstr ""
+"Masquez la fenêtre contextuelle qui s'affiche lorsque vous passez la souris "
+"sur les fiches multimédias et qui comporte des boutons d'action sur les "
+"appareils tactiles, afin d'offrir une expérience mobile plus épurée. Sur "
+"ordinateur, cette fenêtre contextuelle s'affichera toujours lorsque vous "
+"passerez la souris sur les fiches multimédias."
+
+#: templates/users/preferences.html:74
+msgid "Obfuscate Unseen Episodes"
+msgstr "Masquer les épisodes non visionnés"
+
+#: templates/users/preferences.html:76
+msgid "When enabled, unseen episode images and descriptions will be blurred."
+msgstr ""
+"Lorsque cette option est activée, les images et les descriptions des "
+"épisodes non visionnés seront floutées."
+
+#: templates/users/preferences.html:95
+msgid "Bulk Completion Date"
+msgstr "Date d'achèvement global"
+
+#: templates/users/preferences.html:98
+msgid ""
+"When marking a TV show or season as completed, its episodes will be marked "
+"as completed with this date."
+msgstr ""
+"Lorsque vous marquez une série télévisée ou une saison comme terminée, ses "
+"épisodes seront indiqués comme terminés à cette date."
+
+#: templates/users/preferences.html:117
+msgid "Show progress bar on media items"
+msgstr "Afficher la barre de progression sur les éléments multimédias"
+
+#: templates/users/preferences.html:120
+msgid ""
+"Display a progress bar on media items. Items which don't have max progress "
+"will be using a dotted line."
+msgstr ""
+"Afficher une barre de progression sur les éléments multimédias. Les éléments "
+"pour lesquels la progression maximale n'est pas définie seront représentés "
+"par une ligne pointillée."
+
+#: templates/users/preferences.html:140
+msgid "Hide completed media in recommendations"
+msgstr "Masquer les contenus déjà visionnés dans les recommandations"
+
+#: templates/users/preferences.html:143
+msgid ""
+"Hide media you've already completed from the recommendations section on "
+"detail pages."
+msgstr ""
+"Masquer les contenus que vous avez déjà visionnés dans la section des "
+"recommandations des pages de détail."
+
+#: templates/users/preferences.html:163
+msgid "Hide zero ratings"
+msgstr "Masquer les notes à zéro"
+
+#: templates/users/preferences.html:165
+msgid "Hide the rating badge from media cards when the rating is zero."
+msgstr ""
+"Masquer l'icône de note sur les fiches multimédias lorsque la note est égale "
+"à zéro."
+
+#: templates/users/preferences.html:184
+msgid "Date Format"
+msgstr "Format de la date"
+
+#: templates/users/preferences.html:186
+msgid "Choose how dates are displayed throughout the application."
+msgstr ""
+"Choisissez le mode d'affichage des dates dans l'ensemble de l'application."
+
+#: templates/users/preferences.html:204
+msgid "Time Format"
+msgstr "Format de l'heure"
+
+#: templates/users/preferences.html:206
+msgid "Choose between 12-hour or 24-hour clock display."
+msgstr "Choisissez entre l'affichage en format 12 heures ou 24 heures."
+
+#: templates/users/preferences.html:224
+msgid "Week Start Day"
+msgstr "Jour de début de la semaine"
+
+#: templates/users/preferences.html:226
+msgid "Choose which day the week starts on for calendars and statistics."
+msgstr ""
+"Choisissez le jour à partir duquel la semaine commence pour les calendriers "
+"et les statistiques."
+
+#: templates/users/preferences.html:244
+msgid "Watch provider region"
+msgstr "Région des fournisseurs de streaming"
+
+#: templates/users/preferences.html:247
+msgid ""
+"Choose the region to show watch providers for. Setting this to disabled will "
+"hide the box from the media page."
+msgstr ""
+"Sélectionnez la région pour laquelle vous souhaitez afficher les "
+"fournisseurs de streaming. Si vous désactivez cette option, la zone sera "
+"masquée sur la page Médias"
+
+#: templates/users/preferences.html:266
+msgid "Media Types"
+msgstr "Types de médias"
+
+#: templates/users/preferences.html:269
+msgid ""
+"Control which media types are visible throughout the app (sidebar, search, "
+"calendar, notifications)."
+msgstr ""
+"Définissez les types de médias qui s'affichent dans l'ensemble de "
+"l'application (barre latérale, recherche, calendrier, notifications)."
+
+#: templates/users/preferences.html:299
+msgid "Save Preferences"
+msgstr "Enregistrer les préférences"
