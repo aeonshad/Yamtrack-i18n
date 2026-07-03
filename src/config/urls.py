@@ -93,6 +93,8 @@ urlpatterns.append(path("accounts/", include(account_patterns)))
 if settings.ADMIN_ENABLED:
     urlpatterns.append(path("admin/", admin.site.urls))
 
+urlpatterns.append(path("i18n/", include("django.conf.urls.i18n")))
+
 # Add debug toolbar if in DEBUG mode
 if settings.DEBUG:
     urlpatterns.append(path("__debug__/", include("debug_toolbar.urls")))
