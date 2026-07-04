@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-04 07:34+0000\n"
+"POT-Creation-Date: 2026-07-04 07:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -141,19 +141,19 @@ msgstr "Renseignez la date de diffusion de l'épisode, si elle est disponible"
 msgid "Fill in air date"
 msgstr "Renseigner la date de diffusion"
 
-#: templates/app/components/home_grid.html:35
+#: templates/app/components/home_grid.html:36
 #: templates/app/components/media_card.html:92
 #: templates/app/components/media_card_list.html:40
 msgid "Add to tracker"
 msgstr "Ajouter au suivi"
 
-#: templates/app/components/home_grid.html:43
+#: templates/app/components/home_grid.html:44
 #: templates/app/components/media_card.html:102
 #: templates/app/components/media_card_list.html:49
 msgid "Add to custom lists"
 msgstr "Ajouter aux listes personnalisées"
 
-#: templates/app/components/home_grid.html:51
+#: templates/app/components/home_grid.html:52
 #: templates/app/components/media_card.html:111
 #: templates/app/components/media_card_list.html:58
 msgid "View your activity history"
