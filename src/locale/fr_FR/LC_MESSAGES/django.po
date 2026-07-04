@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-04 07:13+0000\n"
+"POT-Creation-Date: 2026-07-04 07:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -60,6 +60,14 @@ msgstr "Se connecter"
 #: templates/allauth/elements/hr.html:4
 msgid "Or continue with"
 msgstr "Ou continuer avec"
+
+#: templates/app/components/fill_history.html:6
+msgid "Activity History"
+msgstr "Historique d'activité"
+
+#: templates/app/components/fill_history.html:29
+msgid "You haven't started tracking it yet."
+msgstr "Vous n'avez pas encore commencé à le suivre."
 
 #: templates/app/components/fill_track.html:79
 #: templates/app/components/fill_track_episode.html:62
