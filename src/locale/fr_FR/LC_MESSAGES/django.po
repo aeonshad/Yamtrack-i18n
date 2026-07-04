@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-03 14:27+0000\n"
+"POT-Creation-Date: 2026-07-04 06:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -36,6 +36,26 @@ msgstr "Vous avez besoin d'un compte ?"
 #: templates/account/login.html:43
 msgid "Register now"
 msgstr "Inscrivez-vous dès maintenant"
+
+#: templates/account/signup.html:6
+msgid "Register"
+msgstr "S'inscrire"
+
+#: templates/account/signup.html:10
+msgid "Create your account"
+msgstr "Créez votre compte"
+
+#: templates/account/signup.html:26
+msgid "Create Account"
+msgstr "Créer un compte"
+
+#: templates/account/signup.html:38
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte ?"
+
+#: templates/account/signup.html:40
+msgid "Sign in"
+msgstr "Se connecter"
 
 #: templates/users/preferences.html:7
 msgid "Preferences - Yamtrack"
@@ -193,3 +213,11 @@ msgstr "Entrez votre nom d'utilisateur"
 #: users/forms.py:21
 msgid "Enter your password"
 msgstr "Entrez votre mot de passe"
+
+#: users/forms.py:34
+msgid "Confirm Password"
+msgstr "Confirmer le mot de passe"
+
+#: users/forms.py:35
+msgid "Confirm your password"
+msgstr "Confirmez votre mot de passe"

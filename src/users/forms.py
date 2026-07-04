@@ -31,8 +31,8 @@ class CustomSignupForm(SignupForm):
         del self.fields["email"]
 
         # Change label and placeholder for password2 field
-        self.fields["password2"].label = "Confirm Password"
-        self.fields["password2"].widget.attrs["placeholder"] = "Confirm your password"
+        self.fields["password2"].label = _( "Confirm Password")
+        self.fields["password2"].widget.attrs["placeholder"] = _( "Confirm your password")
 
 
 class UserUpdateForm(forms.ModelForm):
