@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-04 06:43+0000\n"
+"POT-Creation-Date: 2026-07-04 07:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -60,6 +60,106 @@ msgstr "Se connecter"
 #: templates/allauth/elements/hr.html:4
 msgid "Or continue with"
 msgstr "Ou continuer avec"
+
+#: templates/app/components/fill_track.html:79
+#: templates/app/components/fill_track_episode.html:62
+msgid "Delete"
+msgstr "Supprimer"
+
+#: templates/app/components/fill_track_episode.html:14
+msgid "Track Episode"
+msgstr "Suivre l'épisode"
+
+#: templates/app/components/fill_track_episode.html:27
+msgid "Episode"
+msgstr "Épisode"
+
+#: templates/app/components/fill_track_episode.html:30
+#, python-format
+msgid "Watched once"
+msgid_plural "Watched %(counter)s times"
+msgstr[0] "Vu une fois"
+msgstr[1] "Vu %(counter)s fois"
+
+#: templates/app/components/fill_track_episode.html:34
+msgid "Not watched yet"
+msgstr "Pas encore regardé"
+
+#: templates/app/components/fill_track_episode.html:44
+msgid "Previous Watches"
+msgstr "Visionnages précédents"
+
+#: templates/app/components/fill_track_episode.html:52
+msgid "No date provided"
+msgstr "Aucune date indiquée"
+
+#: templates/app/components/fill_track_episode.html:93
+msgid "Watch Date"
+msgstr "Date de visionnage"
+
+#: templates/app/components/fill_track_episode.html:114
+msgid "Add watch"
+msgstr "Ajouter un visonnage"
+
+#: templates/app/components/fill_track_episode.html:140
+msgid "Fill in current time"
+msgstr "Renseigner l'heure actuelle"
+
+#: templates/app/components/fill_track_episode.html:148
+msgid "Fill in end time"
+msgstr "Renseigner l'heure de fin"
+
+#: templates/app/components/fill_track_episode.html:157
+msgid "Fill in air date"
+msgstr "Renseigner la date de diffusion"
+
+#: templates/app/components/home_section.html:59
+msgid "Load all"
+msgstr "Tout charger"
+
+#: templates/app/components/home_section.html:83
+msgid "Nothing is actively moving right now"
+msgstr "Rien n'est en cours actuellement"
+
+#: templates/app/components/home_section.html:85
+msgid "Your planning shelf is still empty"
+msgstr "Votre liste de planification est encore vide"
+
+#: templates/app/components/home_section.html:90
+msgid ""
+"Start a title and mark it as in progress to see quick updates and release "
+"reminders here."
+msgstr ""
+"Commencez un titre et marquez-le comme en cours pour voir ici les mises à "
+"jour et rappels de sortie."
+
+#: templates/app/components/home_section.html:92
+msgid "Add a few titles to planning to see them here."
+msgstr "Ajoutez quelques titres à votre planning pour les voir ici."
+
+#: templates/app/components/home_section.html:99
+msgid "Browse media"
+msgstr "Explorer les contenus"
+
+#: templates/app/components/search_parent_season.html:9
+msgid "Season"
+msgstr "Saison"
+
+#: templates/app/components/search_parent_season.html:16
+#, python-format
+msgid ""
+"No seasons found matching \"%(query)s\". Please try a different search term."
+msgstr ""
+"Aucune saison ne correspond à « %(query)s ». Veuillez essayer un autre terme "
+"de recherche."
+
+#: templates/app/components/search_parent_tv.html:16
+#, python-format
+msgid ""
+"No TV shows found matching \"%(query)s\". Please try a different search term."
+msgstr ""
+"Aucune série TV ne correspond à « %(query)s ». Veuillez essayer un autre "
+"terme de recherche."
 
 #: templates/users/preferences.html:7
 msgid "Preferences - Yamtrack"
