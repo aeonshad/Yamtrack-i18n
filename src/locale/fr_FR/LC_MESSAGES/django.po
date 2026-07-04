@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-04 07:19+0000\n"
+"POT-Creation-Date: 2026-07-04 07:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -61,6 +61,10 @@ msgstr "Se connecter"
 msgid "Or continue with"
 msgstr "Ou continuer avec"
 
+#: templates/app/components/cast_card.html:14
+msgid "Open TMDB page for"
+msgstr "Ouvrir la page TMDB de"
+
 #: templates/app/components/fill_history.html:6
 msgid "Activity History"
 msgstr "Historique d'activité"
@@ -106,20 +110,54 @@ msgid "Watch Date"
 msgstr "Date de visionnage"
 
 #: templates/app/components/fill_track_episode.html:114
+msgid "Add watched entry with current settings"
+msgstr "Ajouter un visionnage avec les paramètres actuels"
+
+#: templates/app/components/fill_track_episode.html:114
 msgid "Add watch"
 msgstr "Ajouter un visonnage"
 
 #: templates/app/components/fill_track_episode.html:140
+msgid "Fills in the current date and time"
+msgstr "Renseignez la date et l'heure actuelles"
+
+#: templates/app/components/fill_track_episode.html:140
 msgid "Fill in current time"
 msgstr "Renseigner l'heure actuelle"
+
+#: templates/app/components/fill_track_episode.html:147
+msgid "Fills in the date and time the episode will be finished if started now"
+msgstr "Renseignez la date et l'heure auxquelles l'épisode sera terminé s'il est commencé maintenant"
 
 #: templates/app/components/fill_track_episode.html:148
 msgid "Fill in end time"
 msgstr "Renseigner l'heure de fin"
 
 #: templates/app/components/fill_track_episode.html:157
+msgid "Fills in the air date of the episode, if available"
+msgstr "Renseignez la date de diffusion de l'épisode, si elle est disponible"
+
+#: templates/app/components/fill_track_episode.html:157
 msgid "Fill in air date"
 msgstr "Renseigner la date de diffusion"
+
+#: templates/app/components/home_grid.html:35
+#: templates/app/components/media_card.html:92
+#: templates/app/components/media_card_list.html:40
+msgid "Add to tracker"
+msgstr "Ajouter au suivi"
+
+#: templates/app/components/home_grid.html:43
+#: templates/app/components/media_card.html:102
+#: templates/app/components/media_card_list.html:49
+msgid "Add to custom lists"
+msgstr "Ajouter aux listes personnalisées"
+
+#: templates/app/components/home_grid.html:51
+#: templates/app/components/media_card.html:111
+#: templates/app/components/media_card_list.html:58
+msgid "View your activity history"
+msgstr "Voir votre historique d'activité"
 
 #: templates/app/components/home_section.html:59
 msgid "Load all"

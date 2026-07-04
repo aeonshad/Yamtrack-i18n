@@ -111,7 +111,7 @@
             {# Main Button #}
             <button type="submit"
                     class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-l-md transition duration-300 cursor-pointer font-medium"
-                    title="Add watched entry with current settings">{% trans "Add watch" %}</button>
+                    title="{% trans "Add watched entry with current settings" %}">{% trans "Add watch" %}</button>
 
             {# Dropdown Toggle #}
             <button type="button"
@@ -137,14 +137,14 @@
               <button type="button"
                       @click="inputDateTime = '{% if TRACK_TIME %}{% now "Y-m-d\TH:i" %}{% else %}{% now "Y-m-d" %}{% endif %}'; dropdownOpen = false"
                       class="w-full text-left px-4 py-3 text-sm text-gray-200 hover:bg-indigo-600 hover:text-white transition-colors cursor-pointer"
-                      title="Fills in the current date and time">{% trans "Fill in current time" %}</button>
+                      title="{% trans "Fills in the current date and time" %}">{% trans "Fill in current time" %}</button>
 
               {% if episode.runtime_minutes %}
                 {# Option B - Finish Time #}
                 <button type="button"
                         @click="inputDateTime = '{{ finish_datetime|escapejs }}'; dropdownOpen = false"
                         class="w-full text-left px-4 py-3 text-sm text-gray-200 hover:bg-indigo-600 hover:text-white transition-colors cursor-pointer"
-                        title="Fills in the date and time the episode will be finished if started now">
+                        title="{% trans "Fills in the date and time the episode will be finished if started now" %}">
                   {% trans "Fill in end time" %}
                 </button>
               {% endif %}
@@ -154,7 +154,7 @@
                 <button type="button"
                         @click="inputDateTime = '{% if TRACK_TIME %}{{ episode.air_date|escapejs }}T{% now "H:i" %}{% else %}{{ episode.air_date|escapejs }}{% endif %}'; dropdownOpen = false"
                         class="w-full text-left px-4 py-3 text-sm text-gray-200 hover:bg-indigo-600 hover:text-white transition-colors cursor-pointer"
-                        title="Fills in the air date of the episode, if available">{% trans "Fill in air date" %}</button>
+                        title="{% trans "Fills in the air date of the episode, if available" %}">{% trans "Fill in air date" %}</button>
               {% endif %}
             </div>
 
