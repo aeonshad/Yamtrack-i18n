@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-05 07:36+0000\n"
+"POT-Creation-Date: 2026-07-05 08:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -76,6 +76,7 @@ msgstr "Vous n'avez pas encore commencé à le suivre."
 
 #: templates/app/components/fill_track.html:79
 #: templates/app/components/fill_track_episode.html:62
+#: templates/lists/components/list_form.html:46
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -265,11 +266,12 @@ msgstr "Veuillez sélectionner une série dans le menu déroulant"
 msgid "Please select a parent Season from the dropdown"
 msgstr "Veuillez sélectionner une saison dans le menu déroulant"
 
-#: templates/app/create_entry.html:111
+#: templates/app/create_entry.html:111 templates/lists/list_detail.html:188
 msgid "Media Type"
 msgstr "Type de média"
 
 #: templates/app/create_entry.html:127 templates/app/media_list.html:182
+#: templates/lists/list_detail.html:188
 msgid "Title"
 msgstr "Titre"
 
@@ -712,32 +714,129 @@ msgstr ""
 "Consultez les contenus multimédias pour qu'ils apparaissent sur votre fil "
 "d'actualité."
 
-#: templates/events/calendar.html:5 templates/events/calendar.html:10
+#: templates/events/calendar.html:6 templates/events/calendar.html:11
 msgid "Calendar"
 msgstr "Calendrier"
 
-#: templates/events/calendar.html:11
+#: templates/events/calendar.html:12
 msgid "Track upcoming releases from your list."
 msgstr "Suivez les prochaines sorties de votre liste."
 
-#: templates/events/calendar.html:32
-#: templates/events/components/calendar_list.html:10
+#: templates/events/calendar.html:33
+#: templates/events/components/calendar_list.html:11
 msgid "Today"
 msgstr "Aujourd'hui"
 
-#: templates/events/calendar.html:38
+#: templates/events/calendar.html:39
 msgid "Fetch New Releases"
 msgstr "Récupérer les nouveautés"
 
-#: templates/events/calendar.html:70
+#: templates/events/calendar.html:71
 msgid "Export link"
 msgstr "Lien d'exportation"
 
-#: templates/events/calendar.html:73
+#: templates/events/calendar.html:74
 msgid ""
 "This link can be used to integrate your calendar into any of your calendar "
 "applications."
-msgstr "Ce lien vous permet d'intégrer votre calendrier à n'importe laquelle de vos applications de gestion de calendrier."
+msgstr ""
+"Ce lien vous permet d'intégrer votre calendrier à n'importe laquelle de vos "
+"applications de gestion de calendrier."
+
+#: templates/lists/components/fill_lists.html:5
+#: templates/lists/custom_lists.html:10 templates/lists/custom_lists.html:17
+msgid "Lists"
+msgstr "Listes"
+
+#: templates/lists/components/fill_lists.html:16
+msgid "You haven't created any lists yet."
+msgstr "Vous n'avez encore créé aucune liste."
+
+#: templates/lists/components/list_form.html:12
+#: templates/lists/list_detail.html:40
+msgid "Edit List"
+msgstr "Modifier la liste"
+
+#: templates/lists/components/list_form.html:14
+msgid "Create New List"
+msgstr "Créer une nouvelle liste"
+
+#: templates/lists/components/list_form.html:41
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: templates/lists/components/list_form.html:53
+#, fuzzy
+#| msgid "Create"
+msgid "Create List"
+msgstr "Créer"
+
+#: templates/lists/components/list_grid.html:38
+#: templates/lists/list_detail.html:32
+msgid "item"
+msgstr "élément"
+
+#: templates/lists/components/list_item_button.html:9
+msgid "Remove"
+msgstr "Retirer"
+
+#: templates/lists/components/list_item_button.html:17
+msgid "Add"
+msgstr "Ajouter"
+
+#: templates/lists/custom_lists.html:18
+msgid "Organize and share your media lists"
+msgstr "Organisez et partagez vos listes de fichiers multimédias"
+
+#: templates/lists/custom_lists.html:23
+msgid "New List"
+msgstr "Nouvelle liste"
+
+#: templates/lists/custom_lists.html:37
+msgid "Search lists..."
+msgstr "Rechercher des listes..."
+
+#: templates/lists/custom_lists.html:60
+msgid "Items Count"
+msgstr "Nombre d'éléments"
+
+#: templates/lists/custom_lists.html:99
+msgid "No Lists Created Yet"
+msgstr "Aucune liste n'a encore été créée"
+
+#: templates/lists/custom_lists.html:100
+msgid ""
+"Create custom lists to organize your media collection and share with friends."
+msgstr "Créez des listes personnalisées pour organiser votre collection multimédia et la partager avec vos amis."
+
+#: templates/lists/custom_lists.html:103
+msgid "Create Your First List"
+msgstr "Créez votre première liste"
+
+#: templates/lists/list_detail.html:67
+msgid "Search in collection..."
+msgstr "Rechercher dans la collection..."
+
+#: templates/lists/list_detail.html:167
+msgid "All"
+msgstr "Tout"
+
+#: templates/lists/list_detail.html:188
+msgid "Date Added"
+msgstr "Date d'ajout"
+
+#: templates/lists/list_detail.html:224
+msgid "No items in this list yet"
+msgstr "Cette liste ne contient encore aucun élément"
+
+#: templates/lists/list_detail.html:225
+msgid "Start adding your favorite media to build your collection"
+msgstr "Commencez à ajouter vos fichiers multimédias préférés pour constituer votre collection"
+
+#: templates/lists/list_detail.html:228
+#| msgid "Browse media"
+msgid "Browse Media"
+msgstr "Explorer les contenus"
 
 #: templates/users/preferences.html:7
 msgid "Preferences - Yamtrack"

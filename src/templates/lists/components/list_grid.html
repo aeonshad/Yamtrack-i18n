@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {% for custom_list in custom_lists %}
   <div class="bg-[#2a2f35] rounded-lg overflow-hidden hover:shadow-lg group"
        x-data="{ showModal: false }"
@@ -33,7 +35,7 @@
           </div>
         </div>
         <div class="flex items-center text-gray-400 text-sm">
-          {% with item_count=custom_list.items.count %}<span>{{ item_count }} item{{ item_count|pluralize }}</span>{% endwith %}
+          {% with item_count=custom_list.items.count %}<span>{{ item_count }} {% trans "item" %}{{ item_count|pluralize }}</span>{% endwith %}
         </div>
       </div>
     </div>
