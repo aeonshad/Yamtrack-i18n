@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-05 07:10+0000\n"
+"POT-Creation-Date: 2026-07-05 07:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -711,6 +711,33 @@ msgid "Consume media items to see them appear on your timeline."
 msgstr ""
 "Consultez les contenus multimédias pour qu'ils apparaissent sur votre fil "
 "d'actualité."
+
+#: templates/events/calendar.html:5 templates/events/calendar.html:10
+msgid "Calendar"
+msgstr "Calendrier"
+
+#: templates/events/calendar.html:11
+msgid "Track upcoming releases from your list."
+msgstr "Suivez les prochaines sorties de votre liste."
+
+#: templates/events/calendar.html:32
+#: templates/events/components/calendar_list.html:10
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#: templates/events/calendar.html:38
+msgid "Fetch New Releases"
+msgstr "Récupérer les nouveautés"
+
+#: templates/events/calendar.html:70
+msgid "Export link"
+msgstr "Lien d'exportation"
+
+#: templates/events/calendar.html:73
+msgid ""
+"This link can be used to integrate your calendar into any of your calendar "
+"applications."
+msgstr "Ce lien vous permet d'intégrer votre calendrier à n'importe laquelle de vos applications de gestion de calendrier."
 
 #: templates/users/preferences.html:7
 msgid "Preferences - Yamtrack"
