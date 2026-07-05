@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-04 07:52+0000\n"
+"POT-Creation-Date: 2026-07-05 07:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -66,6 +66,7 @@ msgid "Open TMDB page for"
 msgstr "Ouvrir la page TMDB de"
 
 #: templates/app/components/fill_history.html:6
+#: templates/app/statistics.html:161
 msgid "Activity History"
 msgstr "Historique d'activité"
 
@@ -79,10 +80,12 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #: templates/app/components/fill_track_episode.html:14
+#: templates/app/media_details.html:613
 msgid "Track Episode"
 msgstr "Suivre l'épisode"
 
 #: templates/app/components/fill_track_episode.html:27
+#: templates/app/media_details.html:605
 msgid "Episode"
 msgstr "Épisode"
 
@@ -102,6 +105,7 @@ msgid "Previous Watches"
 msgstr "Visionnages précédents"
 
 #: templates/app/components/fill_track_episode.html:52
+#: templates/app/media_details.html:682
 msgid "No date provided"
 msgstr "Aucune date indiquée"
 
@@ -127,7 +131,9 @@ msgstr "Renseigner l'heure actuelle"
 
 #: templates/app/components/fill_track_episode.html:147
 msgid "Fills in the date and time the episode will be finished if started now"
-msgstr "Renseignez la date et l'heure auxquelles l'épisode sera terminé s'il est commencé maintenant"
+msgstr ""
+"Renseignez la date et l'heure auxquelles l'épisode sera terminé s'il est "
+"commencé maintenant"
 
 #: templates/app/components/fill_track_episode.html:148
 msgid "Fill in end time"
@@ -144,18 +150,21 @@ msgstr "Renseigner la date de diffusion"
 #: templates/app/components/home_grid.html:36
 #: templates/app/components/media_card.html:92
 #: templates/app/components/media_card_list.html:40
+#: templates/app/media_details.html:31
 msgid "Add to tracker"
 msgstr "Ajouter au suivi"
 
 #: templates/app/components/home_grid.html:44
 #: templates/app/components/media_card.html:102
 #: templates/app/components/media_card_list.html:49
+#: templates/app/media_details.html:382 templates/app/media_details.html:629
 msgid "Add to custom lists"
 msgstr "Ajouter aux listes personnalisées"
 
 #: templates/app/components/home_grid.html:52
 #: templates/app/components/media_card.html:111
 #: templates/app/components/media_card_list.html:58
+#: templates/app/media_details.html:402 templates/app/media_details.html:651
 msgid "View your activity history"
 msgstr "Voir votre historique d'activité"
 
@@ -206,6 +215,502 @@ msgid ""
 msgstr ""
 "Aucune série TV ne correspond à « %(query)s ». Veuillez essayer un autre "
 "terme de recherche."
+
+#: templates/app/create_entry.html:6
+msgid "Create"
+msgstr "Créer"
+
+#: templates/app/create_entry.html:12
+msgid "Create Custom Entry"
+msgstr "Créer une entrée personnalisée"
+
+#: templates/app/create_entry.html:13
+msgid ""
+"Add a custom media entry to your collection if it's not available in the "
+"database."
+msgstr ""
+"Ajoutez un élément multimédia personnalisé à votre collection s'il n'est pas "
+"disponible dans la base de données."
+
+#: templates/app/create_entry.html:35
+msgid "Preview"
+msgstr "Aperçu"
+
+#: templates/app/create_entry.html:75
+msgid "Progress (Episodes)"
+msgstr "Progression (Épisodes)"
+
+#: templates/app/create_entry.html:76
+msgid "Progress (Chapters)"
+msgstr "Progression (Chapitres)"
+
+#: templates/app/create_entry.html:77
+msgid "Progress (Play Time)"
+msgstr "Progression (Temps de jeu)"
+
+#: templates/app/create_entry.html:78
+msgid "Progress (Pages)"
+msgstr "Progression (Pages)"
+
+#: templates/app/create_entry.html:79 templates/app/create_entry.html:278
+#: templates/app/media_list.html:184
+msgid "Progress"
+msgstr "Progression"
+
+#: templates/app/create_entry.html:87
+msgid "Please select a parent TV show from the dropdown"
+msgstr "Veuillez sélectionner une série dans le menu déroulant"
+
+#: templates/app/create_entry.html:96
+msgid "Please select a parent Season from the dropdown"
+msgstr "Veuillez sélectionner une saison dans le menu déroulant"
+
+#: templates/app/create_entry.html:111
+msgid "Media Type"
+msgstr "Type de média"
+
+#: templates/app/create_entry.html:127 templates/app/media_list.html:182
+msgid "Title"
+msgstr "Titre"
+
+#: templates/app/create_entry.html:129
+msgid "Enter title"
+msgstr "Entrez le titre"
+
+#: templates/app/create_entry.html:137
+msgid "Parent TV Show"
+msgstr "Série"
+
+#: templates/app/create_entry.html:142
+msgid "Search for a TV show..."
+msgstr "Rechercher une série..."
+
+#: templates/app/create_entry.html:159
+msgid "Season Number"
+msgstr "Saison numéro"
+
+#: templates/app/create_entry.html:184
+msgid "Parent Season"
+msgstr "Saison"
+
+#: templates/app/create_entry.html:189
+msgid "Search for a season..."
+msgstr "Rechercher une saison..."
+
+#: templates/app/create_entry.html:206
+msgid "Episode Number"
+msgstr "Épisode numéro"
+
+#: templates/app/create_entry.html:231
+msgid "Image URL"
+msgstr "URL de l'image"
+
+#: templates/app/create_entry.html:236
+msgid "Enter image URL"
+msgstr "Entrez l'URL de l'image"
+
+#: templates/app/create_entry.html:252 templates/app/media_list.html:183
+msgid "Score"
+msgstr "Score"
+
+#: templates/app/create_entry.html:308 templates/app/media_list.html:186
+msgid "Status"
+msgstr "État"
+
+#: templates/app/create_entry.html:322 templates/app/media_list.html:187
+#: templates/app/statistics.html:61
+msgid "Start Date"
+msgstr "Date de début"
+
+#: templates/app/create_entry.html:331 templates/app/media_list.html:188
+#: templates/app/statistics.html:68
+msgid "End Date"
+msgstr "Date de fin"
+
+#: templates/app/create_entry.html:340
+msgid "Notes"
+msgstr "Notes"
+
+#: templates/app/create_entry.html:344
+msgid "Add any notes or comments..."
+msgstr "Ajoutez des remarques ou commentaires..."
+
+#: templates/app/create_entry.html:351
+msgid "Create Entry"
+msgstr "Créer une entrée"
+
+#: templates/app/home.html:6 templates/app/home.html:12
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/app/media_details.html:122
+#, fuzzy
+#| msgid "Show Repeats"
+msgid "Show less"
+msgstr "Voir les rediffusions"
+
+#: templates/app/media_details.html:122
+msgid "Read more"
+msgstr "Voir plus"
+
+#: templates/app/media_details.html:131
+msgid "YOUR NOTES"
+msgstr "VOS NOTES"
+
+#: templates/app/media_details.html:152
+msgid "SCORE"
+msgstr "SCORE"
+
+#: templates/app/media_details.html:162
+msgid "vote"
+msgstr "vote"
+
+#: templates/app/media_details.html:174
+msgid "YOUR SCORE"
+msgstr "VOTRE SCORE"
+
+#: templates/app/media_details.html:187
+msgid "Click to edit"
+msgstr "Cliquez pour modifier"
+
+#: templates/app/media_details.html:229
+msgid "Your History"
+msgstr "Votre historique"
+
+#: templates/app/media_details.html:259 templates/app/media_details.html:343
+msgid "Started:"
+msgstr "Début :"
+
+#: templates/app/media_details.html:266
+msgid "Ended:"
+msgstr "Terminé :"
+
+#: templates/app/media_details.html:273 templates/app/media_details.html:335
+msgid "Progress:"
+msgstr "Progression"
+
+#: templates/app/media_details.html:289
+msgid "Show Repeats"
+msgstr "Voir les rediffusions"
+
+#: templates/app/media_details.html:305
+msgid "Not rated"
+msgstr "Non noté"
+
+#: templates/app/media_details.html:331
+msgid "Status:"
+msgstr "État :"
+
+#: templates/app/media_details.html:347
+msgid "Finished:"
+msgstr "Terminé :"
+
+#: templates/app/media_details.html:377
+msgid "Actions"
+msgstr "Actions"
+
+#: templates/app/media_details.html:421
+msgid "Sync metadata with provider"
+msgstr "Sync les métadonnées avec le fournisseur"
+
+#: templates/app/media_details.html:438
+msgid "Details"
+msgstr "Détails"
+
+#: templates/app/media_details.html:441
+msgid "STREAMING"
+msgstr "STREAMING"
+
+#: templates/app/media_details.html:445
+msgid ""
+"Watch provider region is not configured. Set a region or disable this "
+"feature in the"
+msgstr ""
+"La région du fournisseur de surveillance n'est pas configurée. Définissez "
+"une région ou désactivez cette fonctionnalité dans les "
+
+#: templates/app/media_details.html:447
+msgid "preferences"
+msgstr "préférences"
+
+#: templates/app/media_details.html:459
+msgid "No watch providers"
+msgstr "Aucun fournisseur de montres"
+
+#: templates/app/media_details.html:477
+msgid "SOURCE"
+msgstr "SOURCE"
+
+#: templates/app/media_details.html:484
+msgid "EXTERNAL LINKS"
+msgstr "LIENS EXTERNES"
+
+#: templates/app/media_details.html:493
+msgid "No details available"
+msgstr "Aucune information disponible"
+
+#: templates/app/media_details.html:498
+msgid "TIME TO BEAT"
+msgstr "TEMPS À BATTRE"
+
+#: templates/app/media_details.html:501
+msgid "HASTILY"
+msgstr "À LA HÂTE"
+
+#: templates/app/media_details.html:507
+msgid "NORMALLY"
+msgstr "EN RÈGLE GÉNÉRALE"
+
+#: templates/app/media_details.html:513
+msgid "COMPLETELY"
+msgstr "ENTIÈREMENT"
+
+#: templates/app/media_details.html:524
+msgid "Cast"
+msgstr "Plateforme"
+
+#: templates/app/media_details.html:536
+msgid "View all"
+msgstr "Tout afficher"
+
+#: templates/app/media_details.html:537
+msgid "cast members"
+msgstr "membres de la distribution"
+
+#: templates/app/media_details.html:551
+msgid "DLCs"
+msgstr "DLCs"
+
+#: templates/app/media_details.html:574
+msgid "Episodes"
+msgstr "Épisodes"
+
+#: templates/app/media_details.html:678
+msgid "Last watched:"
+msgstr "Dernier visionnage :"
+
+#: templates/app/media_details.html:684
+#, python-format
+msgid "Watched %(count)s times"
+msgstr "Vu %(count)s fois"
+
+#: templates/app/media_list.html:44
+#, python-format
+msgid "Search %(media_type_plural)s in %(username)s's list..."
+msgstr "Rechercher des %(media_type_plural)s dans la liste de %(username)s..."
+
+#: templates/app/media_list.html:55
+#, python-format
+msgid "Search %(media_type_plural)s in your list..."
+msgstr "Rechercher des %(media_type_plural)s dans votre liste..."
+
+#: templates/app/media_list.html:144 templates/app/search.html:26
+msgid "Grid View"
+msgstr "Affichage en grille"
+
+#: templates/app/media_list.html:149
+msgid "Table View"
+msgstr "Affichage sous forme de tableau"
+
+#: templates/app/media_list.html:162
+#, python-format
+msgid "No %(media_type)s tracked yet"
+msgstr "Aucun %(media_type)s n'a encore été suivi"
+
+#: templates/app/media_list.html:165
+#, python-format
+msgid ""
+"Start tracking your %(media_type_plural)s to keep a record of what you've "
+"%(media_type)s."
+msgstr ""
+"Commencez à suivre vos %(media_type_plural)s pour garder une trace de ce que "
+"vous avez %(media_type)s."
+
+#: templates/app/media_list.html:169
+msgid "Browse"
+msgstr "Explorer"
+
+#: templates/app/media_list.html:185
+msgid "Last Watched"
+msgstr "Dernier visionnage"
+
+#: templates/app/media_list.html:214
+#, python-format
+msgid "%(target_user)s's Media:"
+msgstr "Les médias de %(target_user)s :"
+
+#: templates/app/search.html:6
+msgid "Search"
+msgstr "Rechercher"
+
+#: templates/app/search.html:11
+msgid "Search Results"
+msgstr "Résultats de la recherche"
+
+#: templates/app/search.html:13
+msgid "Source:"
+msgstr "Source :"
+
+#: templates/app/search.html:29
+msgid "List View"
+msgstr "Affichage sous forme de liste"
+
+#: templates/app/search.html:92
+#, python-format
+msgid "Page %(page)s of %(total_pages)s (%(total_results)s results)"
+msgstr "Page %(page)s sur %(total_pages)s (%(total_results)s résultats)"
+
+#: templates/app/search.html:100
+msgid "No results found"
+msgstr "Aucun résultat trouvé"
+
+#: templates/app/search.html:102
+#, python-format
+msgid ""
+"We couldn't find any matches for \"%(query)s\". Try checking your spelling "
+"or using different keywords."
+msgstr ""
+"Nous n'avons trouvé aucun résultat correspondant à « %(query)s ». Vérifiez "
+"l'orthographe de votre requête ou essayez d'utiliser d'autres mots-clés."
+
+#: templates/app/statistics.html:6 templates/app/statistics.html:11
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: templates/app/statistics.html:12
+msgid "Track your media consumption habits"
+msgstr "Suivez vos habitudes de consommation de médias"
+
+#: templates/app/statistics.html:35
+msgid "Predefined Ranges"
+msgstr "Plages prédéfinies"
+
+#: templates/app/statistics.html:38
+msgid "Custom Range"
+msgstr "Plage personnalisée"
+
+#: templates/app/statistics.html:100
+msgid "Completed Items"
+msgstr "Éléments terminés"
+
+#: templates/app/statistics.html:115
+msgid "Average Rating"
+msgstr "Note moyenne"
+
+#: templates/app/statistics.html:130
+msgid "Most Active Day"
+msgstr "Journée la plus active"
+
+#: templates/app/statistics.html:133
+#, python-format
+msgid "%(most_active_day_percentage)s%% of activity"
+msgstr "%(most_active_day_percentage)s%% de l'activité"
+
+#: templates/app/statistics.html:144
+msgid "Current Streak"
+msgstr "Série actuelle"
+
+#: templates/app/statistics.html:147
+#, python-format
+msgid "%(streak)s day"
+msgid_plural "%(streak)s days"
+msgstr[0] "%(streak)s jour"
+msgstr[1] "%(streak)s jours"
+
+#: templates/app/statistics.html:149
+#, python-format
+msgid "Longest: %(streak)s day"
+msgid_plural "Longest: %(streak)s days"
+msgstr[0] "La plus longue : %(streak)s jour"
+msgstr[1] "La plus longue : %(streak)s jours"
+
+#: templates/app/statistics.html:195
+#, python-format
+msgid "%(date)s: %(count)s activity"
+msgid_plural "%(date)s: %(count)s activities"
+msgstr[0] "%(date)s : %(count)s activité"
+msgstr[1] "%(date)s : %(count)s activités"
+
+#: templates/app/statistics.html:206
+msgid "Less"
+msgstr "Moins"
+
+#: templates/app/statistics.html:212
+msgid "More"
+msgstr "Plus"
+
+#: templates/app/statistics.html:220
+msgid "Media Type Distribution"
+msgstr "Répartition par type de média"
+
+#: templates/app/statistics.html:231
+msgid "No media types to display"
+msgstr "Aucun type de média à afficher"
+
+#: templates/app/statistics.html:232
+msgid "Add different types of media to see their distribution."
+msgstr "Ajoutez différents types de médias pour voir leur répartition."
+
+#: templates/app/statistics.html:239
+msgid "Status Distribution"
+msgstr "Répartition des statuts"
+
+#: templates/app/statistics.html:250
+msgid "No status data to display"
+msgstr "Aucune donnée d'état à afficher"
+
+#: templates/app/statistics.html:251
+msgid "Track media items with different statuses to see their distribution."
+msgstr ""
+"Suivez les éléments multimédias selon leur statut afin d'analyser leur "
+"diffusion."
+
+#: templates/app/statistics.html:258
+msgid "Status Distribution by Media Type"
+msgstr "Répartition des statuts par type de média"
+
+#: templates/app/statistics.html:269
+msgid "No data available"
+msgstr "Aucune donnée disponible"
+
+#: templates/app/statistics.html:271
+msgid ""
+"Add media items with different statuses to see their distribution by type."
+msgstr ""
+"Ajoutez des éléments multimédias présentant différents statuts afin de "
+"visualiser leur répartition par type."
+
+#: templates/app/statistics.html:279
+msgid "Score Distribution by Media Type"
+msgstr "Répartition des notes par type de média"
+
+#: templates/app/statistics.html:290 templates/app/statistics.html:312
+msgid "No ratings yet"
+msgstr "Pas encore d'avis"
+
+#: templates/app/statistics.html:291 templates/app/statistics.html:313
+msgid "Rate your media items to see score distribution statistics."
+msgstr ""
+"Notez vos contenus multimédias pour consulter les statistiques sur la "
+"répartition des notes."
+
+#: templates/app/statistics.html:299
+msgid "Top Rated Media"
+msgstr "Médias les mieux notés"
+
+#: templates/app/statistics.html:320
+msgid "Media Timeline"
+msgstr "Chronologie médiatique"
+
+#: templates/app/statistics.html:396
+msgid "Your timeline is empty"
+msgstr "Votre fil d'actualité est vide"
+
+#: templates/app/statistics.html:397
+msgid "Consume media items to see them appear on your timeline."
+msgstr ""
+"Consultez les contenus multimédias pour qu'ils apparaissent sur votre fil "
+"d'actualité."
 
 #: templates/users/preferences.html:7
 msgid "Preferences - Yamtrack"
