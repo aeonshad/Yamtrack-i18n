@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 08:04+0000\n"
+"POT-Creation-Date: 2026-07-06 08:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -845,7 +845,9 @@ msgstr "Connexions de comptes"
 msgid ""
 "You can sign in to your account using any of the following third-party "
 "accounts:"
-msgstr "Vous pouvez vous connecter à votre compte à l'aide de l'un des comptes tiers suivants :"
+msgstr ""
+"Vous pouvez vous connecter à votre compte à l'aide de l'un des comptes tiers "
+"suivants :"
 
 #: templates/socialaccount/connections.html:66
 msgid "Remove Selected"
@@ -862,6 +864,22 @@ msgstr "Ajouter un compte tiers"
 #: templates/socialaccount/connections.html:95
 msgid "Back to Home"
 msgstr "Retour à la page d'accueil"
+
+#: templates/users/components/excluded_items.html:4
+msgid "Currently Excluded:"
+msgstr "Actuellement exclus :"
+
+#: templates/users/components/excluded_items.html:30
+msgid "No media items excluded yet"
+msgstr "Aucun élément multimédia n'a encore été exclu"
+
+#: templates/users/components/search_results.html:22
+msgid "Exclude"
+msgstr "Exclure"
+
+#: templates/users/components/search_results.html:28
+msgid "No matching items found"
+msgstr "Aucun résultat correspondant n'a été trouvé"
 
 #: templates/users/preferences.html:7
 msgid "Preferences - Yamtrack"
