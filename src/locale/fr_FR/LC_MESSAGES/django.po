@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 15:29+0000\n"
+"POT-Creation-Date: 2026-07-06 16:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -16,6 +16,128 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: app/translations/labels.py:7
+msgid "Import from YamTrack backup"
+msgstr ""
+
+#: app/translations/labels.py:8
+#, fuzzy
+#| msgid "Import Time"
+msgid "Import games"
+msgstr "Heure d'importation"
+
+#: app/translations/labels.py:9
+msgid "Import movies and TV shows from your ratings"
+msgstr ""
+
+#: app/translations/labels.py:10
+msgid "Import from GoodReads backup"
+msgstr ""
+
+#: app/translations/labels.py:12
+msgid "File uploads are not available for periodic imports"
+msgstr ""
+
+#: templates/400.html:6 templates/403.html:7 templates/403_csrf.html:7
+msgid "Forbidden"
+msgstr "Interdit"
+
+#: templates/400.html:14
+msgid "Bad Request"
+msgstr "Erreur de requête"
+
+#: templates/400.html:16
+msgid ""
+"The server could not understand the request due to invalid syntax or missing "
+"parameters."
+msgstr ""
+"Le serveur n'a pas pu interpréter la requête en raison d'une syntaxe "
+"incorrecte ou de paramètres manquants."
+
+#: templates/400.html:19 templates/403.html:21 templates/403_csrf.html:30
+#: templates/404.html:18 templates/500.html:24
+msgid "If you believe this was a bug, please"
+msgstr "Si vous pensez qu'il s'agissait d'un bug, merci de"
+
+#: templates/400.html:20 templates/403.html:22 templates/403_csrf.html:31
+#: templates/404.html:19 templates/500.html:25
+msgid "report the issue."
+msgstr "signaler le problème."
+
+#: templates/400.html:27 templates/403.html:34 templates/403_csrf.html:43
+#: templates/404.html:26 templates/500.html:37
+#: templates/socialaccount/connections.html:95
+msgid "Back to Home"
+msgstr "Retour à la page d'accueil"
+
+#: templates/403.html:15 templates/403_csrf.html:15
+msgid "Access Forbidden"
+msgstr "Accès interdit"
+
+#: templates/403.html:17 templates/403_csrf.html:17
+msgid ""
+"You don't have permission to access this resource. Please log in or contact "
+"an administrator."
+msgstr ""
+"Vous n'êtes pas autorisé(e) à accéder à cette ressource. Veuillez vous "
+"connecter ou contacter un administrateur."
+
+#: templates/403.html:29 templates/403_csrf.html:38
+msgid "Log In"
+msgstr "Se connecter"
+
+#: templates/403_csrf.html:20
+msgid "Using a Reverse Proxy?"
+msgstr "Utilisez-vous un proxy inverse ?"
+
+#: templates/403_csrf.html:22
+msgid ""
+"If you're accessing YamTrack through a reverse proxy, you need to set the"
+msgstr ""
+"Si vous accédez à YamTrack via un proxy inverse, vous devez configurer la"
+
+#: templates/403_csrf.html:22
+msgid "URLS"
+msgstr "URLS"
+
+#: templates/403_csrf.html:22
+msgid "environment variable to your application URL."
+msgstr "variable d'environnement à l'URL de votre application."
+
+#: templates/403_csrf.html:26
+msgid "For example,"
+msgstr "Par exemple,"
+
+#: templates/404.html:7
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#: templates/404.html:15
+msgid "Page Not Found"
+msgstr "Page introuvable"
+
+#: templates/404.html:16
+msgid "The page you are looking for doesn't exist or has been moved."
+msgstr "La page que vous recherchez n'existe pas ou a été déplacée."
+
+#: templates/500.html:7
+msgid "Server Error"
+msgstr "Erreur serveur"
+
+#: templates/500.html:15
+msgid "Something Went Wrong"
+msgstr "Une erreur s'est produite"
+
+#: templates/500.html:20
+msgid "We're sorry, but there was an error processing your request."
+msgstr ""
+"Nous sommes désolés, mais une erreur s'est produite lors du traitement de "
+"votre demande."
+
+#: templates/500.html:32
+msgid "Try Again"
+msgstr "Réessayer"
 
 #: templates/account/login.html:7
 msgid "Login"
@@ -340,7 +462,7 @@ msgstr "Ajoutez des remarques ou commentaires..."
 msgid "Create Entry"
 msgstr "Créer une entrée"
 
-#: templates/app/home.html:6 templates/app/home.html:12
+#: templates/app/home.html:6 templates/app/home.html:12 templates/base.html:88
 msgid "Home"
 msgstr "Accueil"
 
@@ -575,6 +697,7 @@ msgstr ""
 "l'orthographe de votre requête ou essayez d'utiliser d'autres mots-clés."
 
 #: templates/app/statistics.html:6 templates/app/statistics.html:11
+#: templates/base.html:145
 msgid "Statistics"
 msgstr "Statistiques"
 
@@ -713,9 +836,32 @@ msgstr ""
 "Consultez les contenus multimédias pour qu'ils apparaissent sur votre fil "
 "d'actualité."
 
-#: templates/events/calendar.html:6 templates/events/calendar.html:11
+#: templates/base.html:130
+msgid "Create Custom"
+msgstr "Créer un élément"
+
+#: templates/base.html:160 templates/lists/components/fill_lists.html:5
+#: templates/lists/custom_lists.html:10 templates/lists/custom_lists.html:17
+msgid "Lists"
+msgstr "Listes"
+
+#: templates/base.html:175 templates/events/calendar.html:6
+#: templates/events/calendar.html:11
 msgid "Calendar"
 msgstr "Calendrier"
+
+#: templates/base.html:201 templates/users/base.html:9
+msgid "Settings"
+msgstr "Paramètres"
+
+#: templates/base.html:210
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: templates/base.html:246
+msgctxt "searchbar"
+msgid "Search"
+msgstr "Rechercher des"
 
 #: templates/events/calendar.html:12
 msgid "Track upcoming releases from your list."
@@ -741,11 +887,6 @@ msgid ""
 msgstr ""
 "Ce lien vous permet d'intégrer votre calendrier à n'importe laquelle de vos "
 "applications de gestion de calendrier."
-
-#: templates/lists/components/fill_lists.html:5
-#: templates/lists/custom_lists.html:10 templates/lists/custom_lists.html:17
-msgid "Lists"
-msgstr "Listes"
 
 #: templates/lists/components/fill_lists.html:16
 msgid "You haven't created any lists yet."
@@ -860,10 +1001,6 @@ msgstr "Aucun compte tiers n'est actuellement associé à ce compte."
 #: templates/socialaccount/connections.html:83
 msgid "Add a Third-Party Account"
 msgstr "Ajouter un compte tiers"
-
-#: templates/socialaccount/connections.html:95
-msgid "Back to Home"
-msgstr "Retour à la page d'accueil"
 
 #: templates/users/about.html:8 templates/users/about.html:13
 #: templates/users/base.html:69
@@ -1011,10 +1148,6 @@ msgstr ""
 "Votre prochaine recherche pourrait être légèrement plus lente, le temps que "
 "les nouvelles données soient récupérées."
 
-#: templates/users/base.html:9
-msgid "Settings"
-msgstr "Paramètres"
-
 #: templates/users/base.html:10
 msgid "Configure your account and preferences"
 msgstr "Configurez votre compte et vos préférences"
@@ -1075,140 +1208,140 @@ msgstr "Votre exportation inclura tous vos éléments multimédias."
 msgid "Export as CSV"
 msgstr "Exporter au format CSV"
 
-#: templates/users/import_data.html:9 templates/users/import_data.html:112
-#: templates/users/import_data.html:167 templates/users/import_data.html:205
-#: templates/users/import_data.html:253
+#: templates/users/import_data.html:8 templates/users/import_data.html:103
+#: templates/users/import_data.html:158 templates/users/import_data.html:196
+#: templates/users/import_data.html:244
 msgid "Import"
 msgstr "Importer"
 
-#: templates/users/import_data.html:28
+#: templates/users/import_data.html:19
 msgid "Import Settings"
 msgstr "Paramètres d'importation"
 
-#: templates/users/import_data.html:30
+#: templates/users/import_data.html:21
 msgid "Configure your import preferences."
 msgstr "Configurez vos préférences d'importation."
 
-#: templates/users/import_data.html:34
+#: templates/users/import_data.html:25
 msgid "Import Frequency"
 msgstr "Fréquence d'importation"
 
-#: templates/users/import_data.html:38
+#: templates/users/import_data.html:29
 msgid "One Time Import"
 msgstr "Une fois uniquement"
 
-#: templates/users/import_data.html:39
+#: templates/users/import_data.html:30
 msgid "Every Day"
 msgstr "Tous les jours"
 
-#: templates/users/import_data.html:40
+#: templates/users/import_data.html:31
 msgid "Every 2 Days"
 msgstr "Tous les deux jours"
 
-#: templates/users/import_data.html:45
+#: templates/users/import_data.html:36
 msgid "Import Time"
 msgstr "Heure d'importation"
 
-#: templates/users/import_data.html:52
+#: templates/users/import_data.html:43
 msgid "Import Mode"
 msgstr "Mode d'importation"
 
-#: templates/users/import_data.html:56
+#: templates/users/import_data.html:47
 msgid "Only Sync New Items"
 msgstr "Synchroniser uniquement les nouveaux éléments"
 
-#: templates/users/import_data.html:57
+#: templates/users/import_data.html:48
 msgid "Sync New Items and Overwrite Existing"
 msgstr "Sync les nouveaux éléments et remplacer ceux existant"
 
-#: templates/users/import_data.html:70
+#: templates/users/import_data.html:61
 msgid "Import Sources"
 msgstr "Sources d'importation"
 
-#: templates/users/import_data.html:73
+#: templates/users/import_data.html:64
 msgid "Some of these require additional configuration, check the"
 msgstr ""
 "Certaines d'entre elles nécessitent une configuration supplémentaire ; "
 "consultez le"
 
-#: templates/users/import_data.html:76
+#: templates/users/import_data.html:67
 msgid "import configuration guide"
 msgstr "guide de configuration de l'importation"
 
-#: templates/users/import_data.html:84
+#: templates/users/import_data.html:75
 msgid "Import TV shows and movies"
 msgstr "Importer des séries télévisées et des films"
 
-#: templates/users/import_data.html:91 templates/users/import_data.html:184
+#: templates/users/import_data.html:82 templates/users/import_data.html:175
 msgid "Import private profile (requires authentication)"
 msgstr "Importer un profil privé (authentification requise)"
 
-#: templates/users/import_data.html:105
+#: templates/users/import_data.html:96
 msgid "Public Trakt username"
 msgstr "Nom d'utilisateur public sur Trakt"
 
-#: templates/users/import_data.html:128
+#: templates/users/import_data.html:119
 msgid "Connect with Trakt & Import"
 msgstr "Se connecter à Trakt et importer"
 
-#: templates/users/import_data.html:136
+#: templates/users/import_data.html:127
 msgid "Import TV shows, movies and anime"
 msgstr ""
 "Importer des séries télévisées, des films et des dessins animés japonais"
 
-#: templates/users/import_data.html:144
+#: templates/users/import_data.html:135
 msgid "Connect with Simkl & Import"
 msgstr "Se connecter à Simkl et importer"
 
-#: templates/users/import_data.html:152 templates/users/import_data.html:177
-#: templates/users/import_data.html:229
+#: templates/users/import_data.html:143 templates/users/import_data.html:168
+#: templates/users/import_data.html:220
 msgid "Import anime and manga"
 msgstr "Importer des anime et des mangas"
 
-#: templates/users/import_data.html:161
+#: templates/users/import_data.html:152
 msgid "MAL username"
 msgstr "Nom d'utilisateur MAL"
 
-#: templates/users/import_data.html:198
+#: templates/users/import_data.html:189
 msgid "Public AniList username"
 msgstr "Nom d'utilisateur public sur AniList"
 
-#: templates/users/import_data.html:221
+#: templates/users/import_data.html:212
 msgid "Connect with AniList & Import"
 msgstr "Se connecter à AniList et importer"
 
-#: templates/users/import_data.html:238
+#: templates/users/import_data.html:229
 msgid "Kitsu user ID"
 msgstr "ID utilisateur Kitsu"
 
-#: templates/users/import_data.html:245
+#: templates/users/import_data.html:236
 msgid "Find it on your Kitsu profile URL:"
 msgstr "Retrouvez-le sur l'URL de votre profil Kitsu :"
 
-#: templates/users/import_data.html:265
+#: templates/users/import_data.html:256
 msgid "View CSV format documentation"
 msgstr "Consulter la documentation sur le format CSV"
 
-#: templates/users/import_data.html:286 templates/users/import_data.html:313
-#: templates/users/import_data.html:375 templates/users/import_data.html:402
+#: templates/users/import_data.html:277 templates/users/import_data.html:304
+#: templates/users/import_data.html:366 templates/users/import_data.html:393
 msgid "Select CSV File"
 msgstr "Sélectionner un fichier CSV"
 
-#: templates/users/import_data.html:321
+#: templates/users/import_data.html:312
 msgid "Import games from your Steam library"
 msgstr "Importer des jeux depuis votre bibliothèque Steam"
 
-#: templates/users/import_data.html:330
+#: templates/users/import_data.html:321
 msgid "Steam 64-bit ID"
 msgstr "ID Steam 64-bits"
 
-#: templates/users/import_data.html:337
+#: templates/users/import_data.html:328
 msgid "Find it on your Steam account details page under your username."
 msgstr ""
 "Vous le trouverez sur la page de détails de votre compte Steam, sous votre "
 "nom d'utilisateur."
 
-#: templates/users/import_data.html:340
+#: templates/users/import_data.html:331
 msgid ""
 "Your profile must be public if the API key you are using is not linked to "
 "the steamid you are requesting."
@@ -1216,11 +1349,11 @@ msgstr ""
 "Votre profil doit être public si la clé API que vous utilisez n'est pas "
 "associée au SteamID que vous demandez."
 
-#: templates/users/import_data.html:414
+#: templates/users/import_data.html:405
 msgid "Active Periodic Imports"
 msgstr "Importations périodiques actives"
 
-#: templates/users/import_data.html:417
+#: templates/users/import_data.html:408
 msgid ""
 "Automated imports that run on a schedule. These will continue to sync your "
 "media until disabled."
@@ -1229,73 +1362,73 @@ msgstr ""
 "continueront à synchroniser vos fichiers multimédias jusqu'à ce qu'elles "
 "soient désactivées."
 
-#: templates/users/import_data.html:438
+#: templates/users/import_data.html:429
 msgid "Username:"
 msgstr "Nom d'utilisateur :"
 
-#: templates/users/import_data.html:439
+#: templates/users/import_data.html:430
 msgid "Mode:"
 msgstr "Mode :"
 
-#: templates/users/import_data.html:440
+#: templates/users/import_data.html:431
 msgid "Last Import:"
 msgstr "Dernière importation :"
 
-#: templates/users/import_data.html:441
+#: templates/users/import_data.html:432
 msgid "Next Import:"
 msgstr "Prochaine importation :"
 
-#: templates/users/import_data.html:446
+#: templates/users/import_data.html:437
 msgid "No periodic imports configured"
 msgstr "Aucune importation périodique n'est configurée"
 
-#: templates/users/import_data.html:447
+#: templates/users/import_data.html:438
 msgid "Set up an import with a daily or 2-day frequency to see it here"
 msgstr ""
 "Configurez une importation quotidienne ou tous les deux jours pour que les "
 "données s'affichent ici"
 
-#: templates/users/import_data.html:457
+#: templates/users/import_data.html:448
 msgid "Import History"
 msgstr "Historique des importations"
 
-#: templates/users/import_data.html:460
+#: templates/users/import_data.html:451
 msgid "Showing import activity from the last 7 days."
 msgstr "Affichage de l'activité d'importation des 7 derniers jours."
 
-#: templates/users/import_data.html:469
+#: templates/users/import_data.html:460
 msgid "Finished"
 msgstr "Terminé"
 
-#: templates/users/import_data.html:471
+#: templates/users/import_data.html:462
 msgid "Success"
 msgstr "Succès"
 
-#: templates/users/import_data.html:475
+#: templates/users/import_data.html:466
 msgid "Started"
 msgstr "Lancé"
 
-#: templates/users/import_data.html:477
+#: templates/users/import_data.html:468
 msgid "Failed"
 msgstr "Échec"
 
-#: templates/users/import_data.html:479
+#: templates/users/import_data.html:470
 msgid "Pending"
 msgstr "En attente"
 
-#: templates/users/import_data.html:495
+#: templates/users/import_data.html:486
 msgid "Show failed items"
 msgstr "Afficher les éléments ayant échoué"
 
-#: templates/users/import_data.html:500
+#: templates/users/import_data.html:491
 msgid "Show traceback"
 msgstr "Afficher la trace d'erreur"
 
-#: templates/users/import_data.html:515
+#: templates/users/import_data.html:506
 msgid "No imports in the last 7 days"
 msgstr "Aucune importation au cours des 7 derniers jours"
 
-#: templates/users/import_data.html:516
+#: templates/users/import_data.html:507
 msgid "Import your media from any source to see the history here"
 msgstr ""
 "Importez vos fichiers multimédias depuis n'importe quelle source pour "
