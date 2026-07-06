@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yamtrack\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-05 08:07+0000\n"
+"POT-Creation-Date: 2026-07-06 08:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aeonshad\n"
 "Language-Team: French\n"
@@ -266,12 +266,11 @@ msgstr "Veuillez sélectionner une série dans le menu déroulant"
 msgid "Please select a parent Season from the dropdown"
 msgstr "Veuillez sélectionner une saison dans le menu déroulant"
 
-#: templates/app/create_entry.html:111 templates/lists/list_detail.html:188
+#: templates/app/create_entry.html:111
 msgid "Media Type"
 msgstr "Type de média"
 
 #: templates/app/create_entry.html:127 templates/app/media_list.html:182
-#: templates/lists/list_detail.html:188
 msgid "Title"
 msgstr "Titre"
 
@@ -796,10 +795,6 @@ msgstr "Nouvelle liste"
 msgid "Search lists..."
 msgstr "Rechercher des listes..."
 
-#: templates/lists/custom_lists.html:60
-msgid "Items Count"
-msgstr "Nombre d'éléments"
-
 #: templates/lists/custom_lists.html:99
 msgid "No Lists Created Yet"
 msgstr "Aucune liste n'a encore été créée"
@@ -807,11 +802,17 @@ msgstr "Aucune liste n'a encore été créée"
 #: templates/lists/custom_lists.html:100
 msgid ""
 "Create custom lists to organize your media collection and share with friends."
-msgstr "Créez des listes personnalisées pour organiser votre collection multimédia et la partager avec vos amis."
+msgstr ""
+"Créez des listes personnalisées pour organiser votre collection multimédia "
+"et la partager avec vos amis."
 
 #: templates/lists/custom_lists.html:103
 msgid "Create Your First List"
 msgstr "Créez votre première liste"
+
+#: templates/lists/list_detail.html:30
+msgid "collaborator"
+msgstr "collaborateur"
 
 #: templates/lists/list_detail.html:67
 msgid "Search in collection..."
@@ -821,22 +822,46 @@ msgstr "Rechercher dans la collection..."
 msgid "All"
 msgstr "Tout"
 
-#: templates/lists/list_detail.html:188
-msgid "Date Added"
-msgstr "Date d'ajout"
-
 #: templates/lists/list_detail.html:224
 msgid "No items in this list yet"
 msgstr "Cette liste ne contient encore aucun élément"
 
 #: templates/lists/list_detail.html:225
 msgid "Start adding your favorite media to build your collection"
-msgstr "Commencez à ajouter vos fichiers multimédias préférés pour constituer votre collection"
+msgstr ""
+"Commencez à ajouter vos fichiers multimédias préférés pour constituer votre "
+"collection"
 
 #: templates/lists/list_detail.html:228
-#| msgid "Browse media"
 msgid "Browse Media"
 msgstr "Explorer les contenus"
+
+#: templates/socialaccount/connections.html:7
+#: templates/socialaccount/connections.html:11
+msgid "Account Connections"
+msgstr "Connexions de comptes"
+
+#: templates/socialaccount/connections.html:18
+msgid ""
+"You can sign in to your account using any of the following third-party "
+"accounts:"
+msgstr "Vous pouvez vous connecter à votre compte à l'aide de l'un des comptes tiers suivants :"
+
+#: templates/socialaccount/connections.html:66
+msgid "Remove Selected"
+msgstr "Supprimer la sélection"
+
+#: templates/socialaccount/connections.html:75
+msgid "You currently have no third-party accounts connected to this account."
+msgstr "Aucun compte tiers n'est actuellement associé à ce compte."
+
+#: templates/socialaccount/connections.html:83
+msgid "Add a Third-Party Account"
+msgstr "Ajouter un compte tiers"
+
+#: templates/socialaccount/connections.html:95
+msgid "Back to Home"
+msgstr "Retour à la page d'accueil"
 
 #: templates/users/preferences.html:7
 msgid "Preferences - Yamtrack"
