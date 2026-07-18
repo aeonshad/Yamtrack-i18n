@@ -1,8 +1,8 @@
-function dateRangePicker() {
+function dateRangePicker(labels) {
   return {
     isOpen: false,
     activeTab: "predefined",
-    selectedRange: "Last 12 Months",
+    selectedRange: "last_12_months",
     startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1))
       .toISOString()
       .split("T")[0],
@@ -10,17 +10,17 @@ function dateRangePicker() {
     customRangeLabel: "",
 
     predefinedRanges: [
-      { name: "Today" },
-      { name: "Yesterday" },
-      { name: "This Week" },
-      { name: "Last 7 Days" },
-      { name: "This Month" },
-      { name: "Last 30 Days" },
-      { name: "Last 90 Days" },
-      { name: "This Year" },
-      { name: "Last 6 Months" },
-      { name: "Last 12 Months" },
-      { name: "All Time" },
+      { key: "today", name: labels.today },
+      { key: "yesterday", name: labels.yesterday },
+      { key: "this_week", name: labels.this_week },
+      { key: "last_7_days", name: labels.last_7_days },
+      { key: "this_month", name: labels.this_month },
+      { key: "last_30_days", name: labels.last_30_days },
+      { key: "last_90_days", name: labels.last_90_days },
+      { key: "this_year", name: labels.this_year },
+      { key: "last_6_months", name: labels.last_6_months },
+      { key: "last_12_months", name: labels.last_12_months },
+      { key: "all_time", name: labels.all_time },
     ],
 
     init() {
@@ -59,20 +59,20 @@ function dateRangePicker() {
       let shouldFormatDates = true;
 
       switch (rangeName) {
-        case "Today":
+        case "today":
           // Both start and end are today
           start = new Date(today);
           end = new Date(today);
           break;
 
-        case "Yesterday":
+        case "yesterday":
           // Both start and end are yesterday
           start = new Date(today);
           start.setDate(start.getDate() - 1);
           end = new Date(start);
           break;
 
-        case "This Week":
+        case "this_week":
           // Start from Monday of current week
           const dayOfWeek = today.getDay(); // 0 is Sunday, 1 is Monday, etc.
           const diff = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Adjust to make Monday the first day
@@ -81,37 +81,37 @@ function dateRangePicker() {
           end = new Date(today);
           break;
 
-        case "Last 7 Days":
+        case "last_7_days":
           start = new Date(today);
           start.setDate(start.getDate() - 6); // 6 days ago + today = 7 days
           end = new Date(today);
           break;
 
-        case "This Month":
+        case "this_month":
           // First day of current month to today
           start = new Date(today.getFullYear(), today.getMonth(), 1);
           end = new Date(today);
           break;
 
-        case "Last 30 Days":
+        case "last_30_days":
           start = new Date(today);
           start.setDate(start.getDate() - 29); // 29 days ago + today = 30 days
           end = new Date(today);
           break;
 
-        case "Last 90 Days":
+        case "last_90_days":
           start = new Date(today);
           start.setDate(start.getDate() - 89); // 89 days ago + today = 90 days
           end = new Date(today);
           break;
 
-        case "This Year":
+        case "this_year":
           // January 1st of current year to today
           start = new Date(today.getFullYear(), 0, 1);
           end = new Date(today);
           break;
 
-        case "Last 6 Months":
+        case "last_6_months":
           start = new Date(today);
           start.setMonth(start.getMonth() - 6);
           // If the day doesn't exist in the target month, it will roll over
@@ -123,7 +123,7 @@ function dateRangePicker() {
           end = new Date(today);
           break;
 
-        case "Last 12 Months":
+        case "last_12_months":
           start = new Date(today);
           start.setFullYear(start.getFullYear() - 1);
           // Handle the same day-of-month issue as with 6 months
@@ -133,7 +133,7 @@ function dateRangePicker() {
           end = new Date(today);
           break;
 
-        case "All Time":
+        case "all_time":
           this.startDate = "all";
           this.endDate = "all";
           shouldFormatDates = false;
@@ -284,10 +284,18 @@ function dateRangePicker() {
       }
     },
 
+    getSelectedRangeLabel() {
+      const range = this.predefinedRanges.find(
+        (range) => range.key === this.selectedRange
+      );
+
+      return range ? range.name : this.selectedRange;
+    },
+
     detectRangeFromDates() {
       // Check for All Time (arbitrary start date)
       if (this.startDate === "all" && this.endDate === "all") {
-        this.selectedRange = "All Time";
+        this.selectedRange = "all_time";
         return;
       }
       // Parse the current start and end dates
@@ -309,7 +317,7 @@ function dateRangePicker() {
 
       // Check for Today
       if (isSameDay(startDate, today) && isSameDay(endDate, today)) {
-        this.selectedRange = "Today";
+        this.selectedRange = "today";
         return;
       }
 
@@ -317,7 +325,7 @@ function dateRangePicker() {
       const yesterday = new Date(today);
       yesterday.setDate(yesterday.getDate() - 1);
       if (isSameDay(startDate, yesterday) && isSameDay(endDate, yesterday)) {
-        this.selectedRange = "Yesterday";
+        this.selectedRange = "yesterday";
         return;
       }
 
@@ -327,7 +335,7 @@ function dateRangePicker() {
       const diffToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
       thisWeekStart.setDate(today.getDate() - diffToMonday);
       if (isSameDay(startDate, thisWeekStart) && isSameDay(endDate, today)) {
-        this.selectedRange = "This Week";
+        this.selectedRange = "this_week";
         return;
       }
 
@@ -335,14 +343,14 @@ function dateRangePicker() {
       const last7DaysStart = new Date(today);
       last7DaysStart.setDate(today.getDate() - 6);
       if (isSameDay(startDate, last7DaysStart) && isSameDay(endDate, today)) {
-        this.selectedRange = "Last 7 Days";
+        this.selectedRange = "last_7_days";
         return;
       }
 
       // Check for This Month
       const thisMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
       if (isSameDay(startDate, thisMonthStart) && isSameDay(endDate, today)) {
-        this.selectedRange = "This Month";
+        this.selectedRange = "this_month";
         return;
       }
 
@@ -350,7 +358,7 @@ function dateRangePicker() {
       const last30DaysStart = new Date(today);
       last30DaysStart.setDate(today.getDate() - 29);
       if (isSameDay(startDate, last30DaysStart) && isSameDay(endDate, today)) {
-        this.selectedRange = "Last 30 Days";
+        this.selectedRange = "last_30_days";
         return;
       }
 
@@ -358,14 +366,14 @@ function dateRangePicker() {
       const last90DaysStart = new Date(today);
       last90DaysStart.setDate(today.getDate() - 89);
       if (isSameDay(startDate, last90DaysStart) && isSameDay(endDate, today)) {
-        this.selectedRange = "Last 90 Days";
+        this.selectedRange = "last_90_days";
         return;
       }
 
       // Check for This Year
       const thisYearStart = new Date(today.getFullYear(), 0, 1);
       if (isSameDay(startDate, thisYearStart) && isSameDay(endDate, today)) {
-        this.selectedRange = "This Year";
+        this.selectedRange = "this_year";
         return;
       }
 
@@ -389,7 +397,7 @@ function dateRangePicker() {
         isWithinOneDay(startDate, last6MonthsStart) &&
         isSameDay(endDate, today)
       ) {
-        this.selectedRange = "Last 6 Months";
+        this.selectedRange = "last_6_months";
         return;
       }
 
@@ -405,7 +413,7 @@ function dateRangePicker() {
         isWithinOneDay(startDate, last12MonthsStart) &&
         isSameDay(endDate, today)
       ) {
-        this.selectedRange = "Last 12 Months";
+        this.selectedRange = "last_12_months";
         return;
       }
 

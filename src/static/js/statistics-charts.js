@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const chartLabels = JSON.parse(document.getElementById("chart_labels").textContent);
   Chart.register(ChartDataLabels);
 
   // Custom external tooltip for bar charts
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Add total row
       tableBody +=
         '<tr class="total-row">' +
-        "<td>Total:</td>" +
+        `<td>${chartLabels.total}:</td>` +
         '<td style="text-align:right;font-weight:bold;">' +
         stackTotal +
         "</td>" +
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set Text
     if (tooltipModel.body) {
       const dataPoint = tooltipModel.dataPoints[0];
-      const label = dataPoint.label;
+      const label = chartLabels.statuses[dataPoint.label] || dataPoint.label;
       const value = dataPoint.raw;
 
       // Calculate percentage
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Create tooltip content
       let tooltipContent = `
         <div class="pie-label">${label}</div>
-        <div class="pie-value">Count: ${value}</div>
+        <div class="pie-value">${chartLabels.count}: ${value}</div>
         <div class="pie-percent">${percentage}%</div>
       `;
 
@@ -160,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formatter: (value, ctx) => {
           const total = ctx.dataset.data.reduce((acc, data) => acc + data, 0);
           const percentage = Math.round((value / total) * 100);
-          const label = ctx.chart.data.labels[ctx.dataIndex];
+          const label = chartLabels.statuses[ctx.chart.data.labels[ctx.dataIndex]] || ctx.chart.data.labels[ctx.dataIndex];
           return percentage > 5 ? `${label}\n${percentage}%` : "";
         },
         textAlign: "center",
@@ -182,7 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
               Chart.overrides.pie.plugins.legend.labels.generateLabels;
             const labels = original.call(this, chart);
             labels.forEach((label, i) => {
-              label.text = `${label.text} (${chart.data.datasets[0].data[i]})`;
+              const translatedLabel = chartLabels.statuses[label.text] || label.text;
+              label.text = `${translatedLabel} (${chart.data.datasets[0].data[i]})`;
               label.strokeStyle = "transparent";
             });
             return labels;
@@ -260,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
       labels: chartData.labels,
       datasets: chartData.datasets
         .map((dataset) => ({
-          label: dataset.label,
+          label: chartLabels.statuses[dataset.label] || dataset.label,
           data: dataset.data,
           backgroundColor: dataset.background_color,
           borderColor: "rgba(255, 255, 255, 0.1)",
@@ -336,23 +338,25 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add score-specific configurations
     scoreChartOptions.scales.x.title = {
       display: true,
-      text: "Score",
+      text: chartLabels.score,
       color: "#D1D5DB",
       padding: { top: 10, bottom: 0 },
     };
 
     scoreChartOptions.scales.y.title = {
       display: true,
-      text: "Number of Items",
+      text: chartLabels.number_of_items,
       color: "#D1D5DB",
       padding: { top: 0, left: 10 },
     };
 
     scoreChartOptions.plugins.title = {
       display: true,
-      text: `Average Score: ${scoreData.average_score} (${
-        scoreData.total_scored
-      } ${scoreData.total_scored === 1 ? "item" : "items"})`,
+      text: `${chartLabels.average_score}: ${scoreData.average_score} (${scoreData.total_scored
+        } ${scoreData.total_scored === 1
+          ? chartLabels.item
+          : chartLabels.items
+        })`,
       color: "#D1D5DB",
       padding: { bottom: 10 },
       font: { size: 14 },

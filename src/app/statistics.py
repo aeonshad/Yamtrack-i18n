@@ -21,6 +21,9 @@ from users.models import WeekStartDayChoices
 
 logger = logging.getLogger(__name__)
 
+from django.utils.translation import gettext as _
+from django.utils import formats
+from datetime import timedelta
 
 def get_user_media(user, start_date, end_date):
     """Get all media items and their counts for a user within date range."""
@@ -337,8 +340,7 @@ def get_timeline(user_media):
                 while current_date <= local_end_date:
                     year = current_date.year
                     month = current_date.month
-                    month_name = calendar.month_name[month]
-                    month_year = f"{month_name} {year}"
+                    month_year = f"{year}-{month:02d}"
 
                     timeline[month_year].append(media)
 
@@ -349,16 +351,14 @@ def get_timeline(user_media):
                 # If only start date, add to the start month
                 year = local_start_date.year
                 month = local_start_date.month
-                month_name = calendar.month_name[month]
-                month_year = f"{month_name} {year}"
+                month_year = f"{year}-{month:02d}"
 
                 timeline[month_year].append(media)
             elif media.end_date:
                 # If only end date, add to the end month
                 year = local_end_date.year
                 month = local_end_date.month
-                month_name = calendar.month_name[month]
-                month_year = f"{month_name} {year}"
+                month_year = f"{year}-{month:02d}"
 
                 timeline[month_year].append(media)
 
@@ -366,19 +366,21 @@ def get_timeline(user_media):
     # Create a list sorted by year and month in reverse order
     sorted_items = []
     for month_year, media_list in timeline.items():
-        month_name, year_str = month_year.split()
-        year = int(year_str)
-        month = list(calendar.month_name).index(month_name)
-        sorted_items.append((month_year, media_list, year, month))
+        year, month = month_year.split("-")
+        sorted_items.append((month_year, media_list, int(year), int(month)))
 
     # Sort by year and month in reverse chronological order
     sorted_items.sort(key=lambda x: (x[2], x[3]), reverse=True)
 
     # Create the final result dictionary
     result = {}
-    for month_year, media_list, _, _ in sorted_items:
+    for month_year, media_list, year, month in sorted_items:
         # Sort the media list using our custom sort key
-        result[month_year] = sorted(media_list, key=time_line_sort_key, reverse=True)
+        month_date = datetime.date(int(year), int(month), 1)
+        month_label = formats.date_format(month_date, "F Y")
+
+        result[month_label] = sorted(media_list, key=time_line_sort_key, reverse=True)
+
     return result
 
 
@@ -393,12 +395,12 @@ def _build_month_labels(date_range, week_start_weekday):
     """Build month labels and their corresponding week counts for the activity grid."""
     months = []
     weeks_per_month = []
-    current_month = date_range[0].strftime("%b")
+    current_month = formats.date_format(date_range[0], "M")
     week_count = 0
 
     for current_date in date_range:
         if current_date.weekday() == week_start_weekday:
-            month = current_date.strftime("%b")
+            month = formats.date_format(current_date, "M")
 
             if current_month != month:
                 if current_month is not None:
@@ -485,7 +487,8 @@ def get_activity_data(user, start_date, end_date):
     months, weeks_per_month = _build_month_labels(date_range, week_start_weekday)
 
     # Weekday labels depend on week start day
-    days = list(calendar.day_abbr)
+    reference_monday = datetime.date(2024, 1, 1)
+    days = [formats.date_format(reference_monday + timedelta(days=i), "D") for i in range(7)]
     weekday_labels = [days[6], *days[0:6]] if week_start_sunday else days
 
     return {
@@ -568,7 +571,7 @@ def calculate_day_of_week_stats(date_counts, start_date):
         if date < start_date:
             continue
         if date_counts[date] > 0:
-            day_name = date.strftime("%A")  # Get full day name
+            day_name = _(calendar.day_name[date.weekday()])  # Get full day name
             day_counts[day_name] += 1
             total_active_days += 1
 
