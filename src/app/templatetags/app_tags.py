@@ -14,6 +14,7 @@ from app.models import MediaTypes, Sources, Status
 
 register = template.Library()
 
+from django.utils.translation import gettext_lazy as _
 
 @register.simple_tag
 def get_static_file_mtime(file_path):
@@ -150,14 +151,20 @@ def media_type_readable(media_type):
 
 @register.filter
 def media_type_readable_plural(media_type):
-    """Return the readable media type in plural form."""
-    singular = MediaTypes(media_type).label
+    labels = {
+        "tv": _("TV Shows"),
+        "season": _("TV Seasons"),
+        "episode": _("Episodes"),
+        "movie": _("Movies"),
+        "anime": _("Anime"),
+        "manga": _("Manga"),
+        "game": _("Games"),
+        "book": _("Books"),
+        "comic": _("Comics"),
+        "boardgame": _("Boardgames"),
+    }
 
-    # Special cases that don't change in plural form
-    if singular.lower() in [MediaTypes.ANIME.value, MediaTypes.MANGA.value]:
-        return singular
-
-    return f"{singular}s"
+    return labels.get(media_type, media_type)
 
 
 @register.filter

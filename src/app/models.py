@@ -25,6 +25,7 @@ from model_utils import FieldTracker
 from model_utils.fields import MonitorField
 from simple_history.models import HistoricalRecords
 from simple_history.utils import bulk_create_with_history, bulk_update_with_history
+from django.utils.translation import gettext_lazy as _
 
 import app
 import events
@@ -52,16 +53,16 @@ class Sources(models.TextChoices):
 class MediaTypes(models.TextChoices):
     """Choices for the media type of the item."""
 
-    TV = "tv", "TV Show"
-    SEASON = "season", "TV Season"
-    EPISODE = "episode", "Episode"
-    MOVIE = "movie", "Movie"
-    ANIME = "anime", "Anime"
-    MANGA = "manga", "Manga"
-    GAME = "game", "Game"
-    BOOK = "book", "Book"
-    COMIC = "comic", "Comic"
-    BOARDGAME = "boardgame", "Boardgame"
+    TV = "tv", _("TV Show")
+    SEASON = "season", _("TV Season")
+    EPISODE = "episode", _("Episode")
+    MOVIE = "movie", _("Movie")
+    ANIME = "anime", _("Anime")
+    MANGA = "manga", _("Manga")
+    GAME = "game", _("Game")
+    BOOK = "book", _("Book")
+    COMIC = "comic", _("Comic")
+    BOARDGAME = "boardgame", _("Boardgame")
 
 
 class Item(CalendarTriggerMixin, models.Model):
