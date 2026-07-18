@@ -103,3 +103,19 @@ def translate_media_details(label_key):
         label_key.replace("_", " ").title(),
     )
 
+
+@register.filter
+def translate_media_form(label_key):
+    label_map = {
+        "Score": _("Score"),
+        "progress": _("Progress"),
+        "Status": _("Status"),
+        "Start date": _("Start Date"),
+        "End date": _("End Date"),
+        "Notes": _("Notes"),
+    }
+    
+    return label_map.get(
+        label_key,
+        label_key.replace("_", " ").title(),
+    )
