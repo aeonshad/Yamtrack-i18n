@@ -1,5 +1,5 @@
 {% load app_tags %}
-{% load i18n%}
+{% load i18n %}
 
 <section class="space-y-5">
   <div class="space-y-4">
@@ -22,7 +22,11 @@
         {% else %}
           {% include "app/icons/leaf.svg" with classes="h-4 w-4 text-sky-400" %}
         {% endif %}
-        {{ section.count }} item{{ section.count|pluralize }}
+        {% if section.count == 1 %}
+          {{ section.count }} {% translate "item" %}
+        {% else %}
+          {{ section.count }} {% translate "items" %}
+        {% endif %}
       </span>
     </div>
     <div class="relative h-px overflow-hidden rounded-full bg-gray-700/80">
