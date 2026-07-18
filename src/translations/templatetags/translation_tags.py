@@ -17,3 +17,18 @@ def translate_home_sort(label_key):
         label_key,
         label_key.replace("_", " ").title(),
     )
+
+@register.filter
+def translate_media_status(label_key):
+    label_map = {
+    "Completed": _("Completed"),
+    "In Progress": _("In Progress"),
+    "Planning": _("Planning"),
+    "Paused": _("Paused"),
+    "Dropped": _("Dropped"),
+    }
+    
+    return label_map.get(
+        label_key,
+        label_key.replace("_", " ").title(),
+    )
