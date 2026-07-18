@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load app_tags %}
+{% load translation_tags %}
 {% load humanize %}
 {% load i18n %}
 
@@ -465,7 +466,7 @@
         {% if media.details.items %}
           {% for key, value in media.details.items %}
             <div class="mb-4">
-              <h3 class="text-sm font-semibold text-gray-400">{{ key|no_underscore|upper }}</h3>
+              <h3 class="text-sm font-semibold text-gray-400">{{ key|translate_media_details|upper }}</h3>
               {% if value|is_list %}
                 {% for item in value %}<p class="text-gray-200">{{ item|iso_date_format:request.user }}</p>{% endfor %}
               {% else %}
