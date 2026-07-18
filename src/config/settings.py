@@ -131,6 +131,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "django.contrib.humanize",
+    "translations",
 ]
 
 MIDDLEWARE = [
@@ -174,6 +175,7 @@ TEMPLATES = [
                 "app.context_processors.media_enums",
                 "app.context_processors.persistent_messages",
                 "django.template.context_processors.request",
+                "translations.labels.ui_labels"
             ],
         },
     },
