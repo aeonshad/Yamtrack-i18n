@@ -10,7 +10,15 @@
 
 {% block settings_content %}
   <div class="space-y-6"
-       x-data="{ importFrequency: 'once', importTime: '{% now "H:i" %}', importMode: 'new' }">
+       x-data="{ importFrequency: 'once', importTime: '{% now "H:i" %}', importMode: 'new', labels: {
+         once: {
+          yamtrack:'{{ ui_labels.import.once.yamtrack|escapejs }}',
+          games: '{{ ui_labels.import.once.games|escapejs }}',
+          media: '{{ ui_labels.import.once.media|escapejs }}',
+          books: '{{ ui_labels.import.once.books|escapejs }}',
+         },
+         periodic: '{{ ui_labels.import.periodic|escapejs }}'
+  }}">
 
     {# Import settings #}
     <div class="bg-[#2a2f35] rounded-lg p-6">
@@ -256,7 +264,7 @@
                title="{% trans "View CSV format documentation" %}">{% include "app/icons/info.svg" with classes="w-4 h-4" %}</a>
           </div>
           <p class="text-sm text-gray-400 mb-3"
-             x-text="importFrequency === 'once' ? 'Import from YamTrack backup' : 'File uploads are not available for periodic imports'">
+            x-text="importFrequency === 'once' ? labels.once.yamtrack : labels.periodic">
           </p>
           <form method="post"
                 action="{% url 'import_yamtrack' %}"
@@ -283,7 +291,7 @@
         <div class="bg-[#39404b] p-4 rounded-lg">
           <div class="flex items-center mb-3">{% source_display "hltb" %}</div>
           <p class="text-sm text-gray-400 mb-3"
-             x-text="importFrequency === 'once' ? 'Import games' : 'File uploads are not available for periodic imports'">
+             x-text="importFrequency === 'once' ? labels.once.games : labels.periodic">
           </p>
           <form method="post"
                 action="{% url 'import_hltb' %}"
@@ -345,7 +353,7 @@
             <div class="flex items-center">{% source_display "imdb" %}</div>
           </div>
           <p class="text-sm text-gray-400 mb-3"
-             x-text="importFrequency === 'once' ? 'Import movies and TV shows from your ratings' : 'File uploads are not available for periodic imports'">
+             x-text="importFrequency === 'once' ? labels.once.media : labels.periodic">
           </p>
           <form method="post"
                 action="{% url 'import_imdb' %}"
@@ -372,7 +380,7 @@
         <div class="bg-[#39404b] p-4 rounded-lg">
           <div class="flex items-center mb-3">{% source_display "goodreads" %}</div>
           <p class="text-sm text-gray-400 mb-3"
-             x-text="importFrequency === 'once' ? 'Import from GoodReads backup' : 'File uploads are not available for periodic imports'">
+            x-text="importFrequency === 'once' ? labels.once.books : labels.periodic">
           </p>
           <form method="post"
                 action="{% url 'import_goodreads' %}"
