@@ -13,5 +13,15 @@ def ui_labels(request):
                 },
                 "periodic": _("File uploads are not available for periodic imports"),
             },
+            "sort": {
+                "date_added": _("Date Added"),
+                "title": _("Title"),
+                "media_type": _("Media Type"),
+                "all_types": _("All Types"),
+                "last_item_added": _("Last Item Added"),
+                "name": _("Name"),
+                "newest_first": _("Newest First"),
+                "items_count": _("Items Count"),
+            },
         }
     }

@@ -44,7 +44,7 @@
 
   <div x-data="{ sort: '{{ current_sort|escapejs }}', type: '{{ request.GET.type|default:'all'|escapejs }}', status: '{{ current_status|escapejs }}', query: '{{ request.GET.q|default:''|escapejs }}', mediaTypeLabels: {
     {% for media_type in media_types %}'{{ media_type }}': '{{ media_type|media_type_readable_plural }}',{% endfor %}
-    'all': 'All Types' }, statusLabels: {
+    'all': '{{ ui_labels.sort.all_types|escapejs }}' }, statusLabels: {
     {% for value, label in status_choices %}
       '{{ value }}': '{{ label }}'
       {% if not forloop.last %},{% endif %}
@@ -185,7 +185,7 @@
                   type="button">
             {% include "app/icons/arrows-up-down.svg" with classes="w-4 h-4" %}
             <span class="text-sm"
-                  x-text="sort === 'date_added' ? 'Date Added' : (sort === 'title' ? 'Title' : 'Media Type')"></span>
+            x-text="sort === 'date_added' ? '{{ ui_labels.sort.date_added|escapejs }}' : (sort === 'title' ? '{{ ui_labels.sort.title|escapejs }}' : '{{ ui_labels.sort.media_type|escapejs }}')"></span>
             {% include "app/icons/chevron-down.svg" with classes="w-4 h-4" %}
           </button>
 

@@ -57,7 +57,7 @@
                 type="button">
           {% include "app/icons/arrows-up-down.svg" with classes="w-4 h-4" %}
           <span class="text-sm"
-                x-text="sort === 'last_item_added' ? 'Last Item Added' : (sort === 'name' ? 'Name' : (sort === 'newest_first' ? 'Newest First' : 'Items Count'))"></span>
+          x-text="sort === 'last_item_added' ? '{{ ui_labels.sort.last_item_added|escapejs }}' : (sort === 'name' ? '{{ ui_labels.sort.name|escapejs }}' : (sort === 'newest_first' ? '{{ ui_labels.sort.newest_first|escapejs }}' : '{{ ui_labels.sort.items_count|escapejs }}'))"></span>
           {% include "app/icons/chevron-down.svg" with classes="w-4 h-4" %}
         </button>
 
