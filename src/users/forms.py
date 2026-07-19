@@ -5,7 +5,7 @@ from django.contrib.auth.forms import (
     PasswordChangeForm,
 )
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _t
 from .models import User
 
 
@@ -16,9 +16,9 @@ class CustomLoginForm(LoginForm):
         """Remove email field and change password2 label."""
         super().__init__(*args, **kwargs)
 
-        self.fields["login"].widget.attrs["placeholder"] = _("Enter your username")
+        self.fields["login"].widget.attrs["placeholder"] = _t("Enter your username")
 
-        self.fields["password"].widget.attrs["placeholder"] = _("Enter your password")
+        self.fields["password"].widget.attrs["placeholder"] = _t("Enter your password")
 
 
 class CustomSignupForm(SignupForm):
@@ -31,8 +31,8 @@ class CustomSignupForm(SignupForm):
         del self.fields["email"]
 
         # Change label and placeholder for password2 field
-        self.fields["password2"].label = _( "Confirm Password")
-        self.fields["password2"].widget.attrs["placeholder"] = _( "Confirm your password")
+        self.fields["password2"].label = _t("Confirm Password")
+        self.fields["password2"].widget.attrs["placeholder"] = _t("Confirm your password")
 
 
 class UserUpdateForm(forms.ModelForm):

@@ -1,6 +1,6 @@
 from django.urls import reverse
 from django.utils.http import urlencode
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _t
 
 from app.models import MediaTypes, Sources, Status
 
@@ -89,7 +89,7 @@ MEDIA_TYPE_CONFIG = {
             1.83l8.58 3.91 a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
             <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
             <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>""",
-        "unit": ("E", _("Episode"), _("Episodes")),
+        "unit": ("E", _t("Episode"), _t("Episodes")),
     },
     MediaTypes.EPISODE.value: {
         "sources": [Sources.TMDB],
@@ -130,7 +130,7 @@ MEDIA_TYPE_CONFIG = {
         "svg_icon": """
             <circle cx="12" cy="12" r="10"/>
             <polygon points="10 8 16 12 10 16 10 8"/>""",
-        "unit": ("E", _("Episode"), _("Episodes")),
+        "unit": ("E", _t("Episode"), _t("Episodes")),
         "date_key": "end_date",
     },
     MediaTypes.MANGA.value: {
@@ -149,7 +149,7 @@ MEDIA_TYPE_CONFIG = {
             <path d="M16 13H8"/>
             <path d="M16 17H8"/>""",
         "date_key": "end_date",
-        "unit": ("#", _("Chapter"), _("Chapters")),
+        "unit": ("#", _t("Chapter"), _t("Chapters")),
     },
     MediaTypes.GAME.value: {
         "sources": [Sources.IGDB],
@@ -185,7 +185,7 @@ MEDIA_TYPE_CONFIG = {
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5
             2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>""",
         "date_key": "publish_date",
-        "unit": ("P", _("Page"), _("Pages")),
+        "unit": ("P", _t("Page"), _t("Pages")),
     },
     MediaTypes.COMIC.value: {
         "sources": [Sources.COMICVINE],
@@ -200,7 +200,7 @@ MEDIA_TYPE_CONFIG = {
             <path d="M7 3v18"/>
             <path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1
             5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z"/>""",
-        "unit": ("#", _("Issue"), _("Issues")),
+        "unit": ("#", _t("Issue"), _t("Issues")),
     },
     MediaTypes.BOARDGAME.value: {
         "sources": [Sources.BGG],
@@ -216,7 +216,7 @@ MEDIA_TYPE_CONFIG = {
             <path d="M16 8h-2"/>
             <circle cx="16" cy="16" r="2"/>
             <path d="M8 16v-2"/>""",
-        "unit": ("#", _("Play"), _("Plays")),
+        "unit": ("#", _t("Play"), _t("Plays")),
         "date_key": "year",
     },
 }

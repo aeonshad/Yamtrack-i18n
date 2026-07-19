@@ -5,7 +5,7 @@ from django.db import models
 from django_celery_beat.models import PeriodicTask
 from django_celery_results.models import TaskResult
 
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _t
 
 from app.models import Item, MediaTypes, Status
 from users import helpers
@@ -25,27 +25,27 @@ def generate_token():
 class HomeSortChoices(models.TextChoices):
     """Choices for home page sort options."""
 
-    UPCOMING = "upcoming", _("Upcoming")
-    RECENT = "recent", _("Recent")
-    COMPLETION = "completion", _("Completion")
-    EPISODES_LEFT = "episodes_left", _("Episodes Left")
-    TITLE = "title", _("Title")
+    UPCOMING = "upcoming", _t("Upcoming")
+    RECENT = "recent", _t("Recent")
+    COMPLETION = "completion", _t("Completion")
+    EPISODES_LEFT = "episodes_left", _t("Episodes Left")
+    TITLE = "title", _t("Title")
 
 
 class MediaSortChoices(models.TextChoices):
     """Choices for media list sort options."""
 
-    SCORE = "score", _("Rating")
-    TITLE = "title", _("Title")
-    PROGRESS = "progress", _("Progress")
-    START_DATE = "start_date", _("Start Date")
-    END_DATE = "end_date", _("End Date")
+    SCORE = "score", _t("Rating")
+    TITLE = "title", _t("Title")
+    PROGRESS = "progress", _t("Progress")
+    START_DATE = "start_date", _t("Start Date")
+    END_DATE = "end_date", _t("End Date")
 
 
 class MediaStatusChoices(models.TextChoices):
     """Choices for media list status options."""
 
-    ALL = "All", _("All")
+    ALL = "All", _t("All")
     COMPLETED = Status.COMPLETED.value, Status.COMPLETED.label
     IN_PROGRESS = Status.IN_PROGRESS.value, Status.IN_PROGRESS.label
     PLANNING = Status.PLANNING.value, Status.PLANNING.label
@@ -56,40 +56,40 @@ class MediaStatusChoices(models.TextChoices):
 class LayoutChoices(models.TextChoices):
     """Choices for media list layout options."""
 
-    GRID = "grid", _("Grid")
-    TABLE = "table", _("Table")
+    GRID = "grid", _t("Grid")
+    TABLE = "table", _t("Table")
 
 
 class CalendarLayoutChoices(models.TextChoices):
     """Choices for calendar layout options."""
 
-    GRID = "grid", _("Grid")
-    LIST = "list", _("List")
+    GRID = "grid", _t("Grid")
+    LIST = "list", _t("List")
 
 
 class ListSortChoices(models.TextChoices):
     """Choices for list sort options."""
 
-    LAST_ITEM_ADDED = "last_item_added", _("Last Item Added")
-    NAME = "name", _("Name")
-    ITEMS_COUNT = "items_count", _("Items Count")
-    NEWEST_FIRST = "newest_first", _("Newest First")
+    LAST_ITEM_ADDED = "last_item_added", _t("Last Item Added")
+    NAME = "name", _t("Name")
+    ITEMS_COUNT = "items_count", _t("Items Count")
+    NEWEST_FIRST = "newest_first", _t("Newest First")
 
 
 class ListDetailSortChoices(models.TextChoices):
     """Choices for list detail sort options."""
 
-    DATE_ADDED = "date_added", _("Date Added")
-    TITLE = "title", _("Title")
-    MEDIA_TYPE = "media_type", _("Media Type")
+    DATE_ADDED = "date_added", _t("Date Added")
+    TITLE = "title", _t("Title")
+    MEDIA_TYPE = "media_type", _t("Media Type")
 
 
 class QuickWatchDateChoices(models.TextChoices):
     """Choices for quick watch date behavior when bulk-marking media as completed."""
 
-    CURRENT_DATE = "current_date", _("Current Date")
-    RELEASE_DATE = "release_date", _("Release Date")
-    NO_DATE = "no_date", _("No Date")
+    CURRENT_DATE = "current_date", _t("Current Date")
+    RELEASE_DATE = "release_date", _t("Release Date")
+    NO_DATE = "no_date", _t("No Date")
 
 
 class DateFormatChoices(models.TextChoices):
@@ -105,15 +105,15 @@ class DateFormatChoices(models.TextChoices):
 class TimeFormatChoices(models.TextChoices):
     """Choices for time format display."""
 
-    HOUR_24 = "H:i", _("14:30 (24-hour)")
-    HOUR_12 = "g:i A", _("2:30 PM (12-hour)")
+    HOUR_24 = "H:i", _t("14:30 (24-hour)")
+    HOUR_12 = "g:i A", _t("2:30 PM (12-hour)")
 
 
 class WeekStartDayChoices(models.TextChoices):
     """Choices for week start day."""
 
-    MONDAY = "monday", _("Monday")
-    SUNDAY = "sunday", _("Sunday")
+    MONDAY = "monday", _t("Monday")
+    SUNDAY = "sunday", _t("Sunday")
 
 
 class User(AbstractUser):

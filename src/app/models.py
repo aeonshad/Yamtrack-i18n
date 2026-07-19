@@ -25,7 +25,7 @@ from model_utils import FieldTracker
 from model_utils.fields import MonitorField
 from simple_history.models import HistoricalRecords
 from simple_history.utils import bulk_create_with_history, bulk_update_with_history
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _t
 
 import app
 import events
@@ -53,16 +53,16 @@ class Sources(models.TextChoices):
 class MediaTypes(models.TextChoices):
     """Choices for the media type of the item."""
 
-    TV = "tv", _("TV Show")
-    SEASON = "season", _("TV Season")
-    EPISODE = "episode", _("Episode")
-    MOVIE = "movie", _("Movie")
-    ANIME = "anime", _("Anime")
-    MANGA = "manga", _("Manga")
-    GAME = "game", _("Game")
-    BOOK = "book", _("Book")
-    COMIC = "comic", _("Comic")
-    BOARDGAME = "boardgame", _("Boardgame")
+    TV = "tv", _t("TV Show")
+    SEASON = "season", _t("TV Season")
+    EPISODE = "episode", _t("Episode")
+    MOVIE = "movie", _t("Movie")
+    ANIME = "anime", _t("Anime")
+    MANGA = "manga", _t("Manga")
+    GAME = "game", _t("Game")
+    BOOK = "book", _t("Book")
+    COMIC = "comic", _t("Comic")
+    BOARDGAME = "boardgame", _t("Boardgame")
 
 
 class Item(CalendarTriggerMixin, models.Model):
@@ -766,11 +766,11 @@ class MediaManager(models.Manager):
 class Status(models.TextChoices):
     """Choices for item status."""
 
-    COMPLETED = "Completed", _("Completed")
-    IN_PROGRESS = "In progress", _("In Progress")
-    PLANNING = "Planning", _("Planning")
-    PAUSED = "Paused", _("Paused")
-    DROPPED = "Dropped", _("Dropped")
+    COMPLETED = "Completed", _t("Completed")
+    IN_PROGRESS = "In progress", _t("In Progress")
+    PLANNING = "Planning", _t("Planning")
+    PAUSED = "Paused", _t("Paused")
+    DROPPED = "Dropped", _t("Dropped")
 
 
 class UserMessageLevel(models.TextChoices):

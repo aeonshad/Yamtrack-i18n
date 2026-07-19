@@ -14,7 +14,7 @@ from app.models import MediaTypes, Sources, Status
 
 register = template.Library()
 
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _t
 
 @register.simple_tag
 def get_static_file_mtime(file_path):
@@ -152,16 +152,16 @@ def media_type_readable(media_type):
 @register.filter
 def media_type_readable_plural(media_type):
     labels = {
-        "tv": _("TV Shows"),
-        "season": _("TV Seasons"),
-        "episode": _("Episodes"),
-        "movie": _("Movies"),
-        "anime": _("Anime"),
-        "manga": _("Manga"),
-        "game": _("Games"),
-        "book": _("Books"),
-        "comic": _("Comics"),
-        "boardgame": _("Boardgames"),
+        "tv": _t("TV Shows"),
+        "season": _t("TV Seasons"),
+        "episode": _t("Episodes"),
+        "movie": _t("Movies"),
+        "anime": _t("Anime"),
+        "manga": _t("Manga"),
+        "game": _t("Games"),
+        "book": _t("Books"),
+        "comic": _t("Comics"),
+        "boardgame": _t("Boardgames"),
     }
 
     return labels.get(media_type, media_type)
