@@ -13,6 +13,7 @@ from app.providers import services
 from app.templatetags import app_tags
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
+from django.utils.translation import gettext as _t
 
 logger = logging.getLogger(__name__)
 
@@ -59,7 +60,7 @@ class YamtrackImporter:
         try:
             decoded_file = self.file.read().decode("utf-8").splitlines()
         except UnicodeDecodeError as e:
-            msg = "Invalid file format. Please upload a CSV file."
+            msg = _t("Invalid file format. Please upload a CSV file.")
             raise MediaImportError(msg) from e
 
         reader = DictReader(decoded_file)
@@ -68,10 +69,14 @@ class YamtrackImporter:
             try:
                 self._process_row(row)
             except services.ProviderAPIError as error:
-                error_msg = (
-                    f"Error processing entry with ID {row['media_id']} "
-                    f"({app_tags.media_type_readable(row['media_type'])}): {error}"
-                )
+                error_msg = _t(
+                    "Error processing entry with ID %(media_id)s "
+                    "(%(media_type)s): %(error)s",
+                ) % {
+                    "media_id": row["media_id"],
+                    "media_type": app_tags.media_type_readable(row["media_type"]),
+                    "error": error,
+                }
                 self.warnings.append(error_msg)
                 continue
             except Exception as error:
@@ -157,9 +162,20 @@ class YamtrackImporter:
                 form.instance._history_date = parse_datetime(progressed_at)
             self.bulk_media[media_type].append(form.instance)
         else:
-            error_msg = f"{row['title']} ({media_type}): {form.errors.as_json()}"
-            self.warnings.append(error_msg)
-            logger.error(error_msg)
+            self.warnings.append(
+                _t("%(title)s (%(media_type)s): %(errors)s")
+                % {
+                    "title": row["title"],
+                    "media_type": media_type,
+                    "errors": form.errors.as_json(),
+                },
+            )
+            logger.error(
+                "Form validation failed for %s (%s): %s",
+                row["title"],
+                media_type,
+                form.errors.as_json(),
+            )
 
     def _handle_missing_metadata(self, row, media_type, season_number, episode_number):
         """Handle missing metadata by fetching from provider."""

@@ -17,6 +17,7 @@ from django.utils.dateparse import parse_date
 from django.utils.text import slugify
 from django.utils.timezone import datetime
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
+from django.utils.translation import gettext as _t
 
 from app import config, helpers, history_processor
 from app import statistics as stats
@@ -147,12 +148,12 @@ def media_list(request, username, media_type):
     else:
         # privacy check then media type check
         if target_user.profile_private:
-            msg = "User not found"
+            msg = _t("User not found")
             raise Http404(msg)
 
         enabled_media_types = target_user.get_enabled_media_types()
         if not enabled_media_types:
-            msg = "User doesn't have any media types enabled"
+            msg = _t("User doesn't have any media types enabled")
             raise Http404(msg)
 
         if media_type not in enabled_media_types:
@@ -406,7 +407,7 @@ def update_media_score(request, media_type, instance_id):
 def sync_metadata(request, source, media_type, media_id, season_number=None):
     """Refresh the metadata for a media item."""
     if source == Sources.MANUAL.value:
-        msg = "Manual items cannot be synced."
+        msg = _t("Manual items cannot be synced.")
         messages.error(request, msg)
         return HttpResponse(
             msg,
@@ -422,7 +423,7 @@ def sync_metadata(request, source, media_type, media_id, season_number=None):
     logger.debug("%s - Cache TTL for: %s", cache_key, ttl)
 
     if ttl is not None and ttl > (settings.CACHE_TIMEOUT - 3):
-        msg = "The data was recently synced, please wait a few seconds."
+        msg = _t("The data was recently synced, please wait a few seconds.")
         messages.error(request, msg)
         logger.error(msg)
     else:
@@ -498,8 +499,11 @@ def sync_metadata(request, source, media_type, media_id, season_number=None):
 
         item.fetch_releases(delay=False)
 
-        msg = f"{title} was synced to {Sources(source).label} successfully."
-        messages.success(request, msg)
+        messages.success(
+            request,
+            _t("%(title)s was synced to %(source)s successfully.")
+            % {"title": title, "source": Sources(source).label},
+        )
 
     if request.headers.get("HX-Request"):
         return HttpResponse(
@@ -740,7 +744,11 @@ def create_entry(request):
             media_name += f" - Episode {form.cleaned_data['episode_number']}"
 
         logger.exception("%s already exists in the database.", media_name)
-        messages.error(request, f"{media_name} already exists in the database.")
+        messages.error(
+            request,
+            _t("%(media_name)s already exists in the database.")
+            % {"media_name": media_name},
+        )
         return redirect("create_entry")
 
     # Prepare and validate the media form
@@ -771,9 +779,11 @@ def create_entry(request):
     media_form.save()
 
     # Success message
-    msg = f"{item} added successfully."
-    messages.success(request, msg)
-    logger.info(msg)
+    messages.success(
+        request,
+        _t("%(item)s added successfully.") % {"item": item},
+    )
+    logger.info("%s added successfully.", item)
 
     return redirect("create_entry")
 

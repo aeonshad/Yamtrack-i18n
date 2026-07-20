@@ -70,7 +70,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.TMDB,
         "sample_query": "Breaking Bad",
         "unicode_icon": "📺",
-        "verb": ("watch", "watched"),
+        "verb": (_t("watch"), _t("watched")),
         "text_color": COLORS["emerald"]["text"],
         "stats_color": COLORS["emerald"]["hex"],
         "svg_icon": """
@@ -81,7 +81,7 @@ MEDIA_TYPE_CONFIG = {
         "sources": [Sources.TMDB],
         "default_source": Sources.TMDB,
         "unicode_icon": "📺",
-        "verb": ("watch", "watched"),
+        "verb": (_t("watch"), _t("watched")),
         "text_color": COLORS["purple"]["text"],
         "stats_color": COLORS["purple"]["hex"],
         "svg_icon": """
@@ -95,7 +95,7 @@ MEDIA_TYPE_CONFIG = {
         "sources": [Sources.TMDB],
         "default_source": Sources.TMDB,
         "unicode_icon": "📺",
-        "verb": ("watch", "watched"),
+        "verb": (_t("watch"), _t("watched")),
         "text_color": COLORS["indigo"]["text"],
         "stats_color": COLORS["indigo"]["hex"],
         "svg_icon": """<polygon points="6 3 20 12 6 21 6 3"/>""",
@@ -105,7 +105,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.TMDB,
         "sample_query": "The Shawshank Redemption",
         "unicode_icon": "🎬",
-        "verb": ("watch", "watched"),
+        "verb": (_t("watch"), _t("watched")),
         "text_color": COLORS["orange"]["text"],
         "stats_color": COLORS["orange"]["hex"],
         "svg_icon": """
@@ -124,7 +124,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.MAL,
         "sample_query": "Perfect Blue",
         "unicode_icon": "🎭",
-        "verb": ("watch", "watched"),
+        "verb": (_t("watch"), _t("watched")),
         "text_color": COLORS["blue"]["text"],
         "stats_color": COLORS["blue"]["hex"],
         "svg_icon": """
@@ -138,7 +138,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.MAL,
         "sample_query": "Berserk",
         "unicode_icon": "📚",
-        "verb": ("read", "read"),
+        "verb": (_t("read"), _t("read")),
         "text_color": COLORS["red"]["text"],
         "stats_color": COLORS["red"]["hex"],
         "svg_icon": """
@@ -156,7 +156,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.IGDB,
         "sample_query": "Half-Life",
         "unicode_icon": "🎮",
-        "verb": ("play", "played"),
+        "verb": (_t("play"), _t("played")),
         "text_color": COLORS["yellow"]["text"],
         "stats_color": COLORS["yellow"]["hex"],
         "svg_icon": """
@@ -178,7 +178,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.HARDCOVER,
         "sample_query": "The Great Gatsby",
         "unicode_icon": "📖",
-        "verb": ("read", "read"),
+        "verb": (_t("read"), _t("read")),
         "text_color": COLORS["fuchsia"]["text"],
         "stats_color": COLORS["fuchsia"]["hex"],
         "svg_icon": """
@@ -192,7 +192,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.COMICVINE,
         "sample_query": "Batman",
         "unicode_icon": "📕",
-        "verb": ("read", "read"),
+        "verb": (_t("read"), _t("read")),
         "text_color": COLORS["cyan"]["text"],
         "stats_color": COLORS["cyan"]["hex"],
         "svg_icon": """
@@ -207,7 +207,7 @@ MEDIA_TYPE_CONFIG = {
         "default_source": Sources.BGG,
         "sample_query": "Catan",
         "unicode_icon": "🎲",
-        "verb": ("play", "played"),
+        "verb": (_t("play"), _t("played")),
         "text_color": COLORS["lime"]["text"],
         "stats_color": COLORS["lime"]["hex"],
         "svg_icon": """

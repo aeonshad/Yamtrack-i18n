@@ -14,6 +14,7 @@ from app.models import MediaTypes, Sources, Status
 from app.providers import services
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
+from django.utils.translation import gettext as _t
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +45,7 @@ def get_token(request):
         )
     except services.ProviderAPIError as error:
         if error.status_code == requests.codes.unauthorized:
-            msg = "Invalid Anilist secret key."
+            msg = _t("Invalid Anilist secret key.")
             raise MediaImportError(msg) from error
         raise
 
@@ -79,7 +80,7 @@ def get_username_from_oauth(access_token):
         )
     except services.ProviderAPIError as error:
         if error.status_code == requests.codes.unauthorized:
-            msg = "Invalid AniList access token."
+            msg = _t("Invalid AniList access token.")
             raise MediaImportError(msg) from error
         raise
 
@@ -224,10 +225,10 @@ class AniListImporter:
         except requests.exceptions.HTTPError as error:
             error_message = error.response.json()["errors"][0].get("message")
             if error_message == "User not found":
-                msg = f"User {self.username} not found."
+                msg = _t("User %(username)s not found.") % {"username": self.username}
                 raise MediaImportError(msg) from error
             if error_message == "Private User":
-                msg = f"User {self.username} is private."
+                msg = _t("User %(username)s is private.") % {"username": self.username}
                 raise MediaImportError(msg) from error
             raise
 
@@ -262,7 +263,9 @@ class AniListImporter:
         """Process a single entry from AniList."""
         if content["media"]["idMal"] is None:
             title = content["media"]["title"]["userPreferred"]
-            self.warnings.append(f"{title}: No matching MAL ID.")
+            self.warnings.append(
+                _t("%(title)s: No matching MAL ID.") % {"title": title},
+            )
             return
 
         # Check if we should process this entry based on mode

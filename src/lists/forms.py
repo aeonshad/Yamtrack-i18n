@@ -1,5 +1,6 @@
 from django import forms
 from django_select2 import forms as s2forms
+from django.utils.translation import gettext_lazy as _t
 
 from lists.models import CustomList
 
@@ -22,7 +23,7 @@ class CustomListForm(forms.ModelForm):
             "collaborators": CollaboratorsWidget(
                 attrs={
                     "data-minimum-input-length": 1,
-                    "data-placeholder": "Search users to add...",
+                    "data-placeholder": _t("Search users to add..."),
                     "data-allow-clear": "false",
                 },
             ),

@@ -13,6 +13,7 @@ from app.providers import services
 from lists.forms import CustomListForm
 from lists.models import CustomList, CustomListItem
 from users.models import ListDetailSortChoices, ListSortChoices, MediaStatusChoices
+from django.utils.translation import gettext as _t
 
 logger = logging.getLogger(__name__)
 
@@ -96,7 +97,7 @@ def list_detail(request, list_id):
     )
 
     if not custom_list.user_can_view(request.user):
-        msg = "List not found"
+        msg = _t("List not found")
         raise Http404(msg)
 
     # Get and process request parameters
@@ -227,7 +228,10 @@ def edit(request):
             form.save()
             logger.info("%s list edited successfully.", custom_list)
     else:
-        messages.error(request, "You do not have permission to edit this list.")
+        messages.error(
+            request,
+            _t("You do not have permission to edit this list."),
+        )
     return helpers.redirect_back(request)
 
 
@@ -241,7 +245,10 @@ def delete(request):
         logger.info("%s list deleted successfully.", custom_list)
         return redirect("lists")
 
-    messages.error(request, "You do not have permission to delete this list.")
+    messages.error(
+        request,
+        _t("You do not have permission to delete this list."),
+    )
     return helpers.redirect_back(request)
 
 

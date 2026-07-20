@@ -42,7 +42,7 @@ class UserUpdateForm(forms.ModelForm):
         """Check if the user is demo before changing the password."""
         cleaned_data = super().clean()
         if self.instance.is_demo:
-            msg = "Changing the username is not allowed for the demo account."
+            msg = _t("Changing the username is not allowed for the demo account.")
             self.add_error("username", msg)
         return cleaned_data
 
@@ -65,7 +65,7 @@ class PasswordChangeForm(PasswordChangeForm):
         """Check if the user is demo before changing the password."""
         cleaned_data = super().clean()
         if self.user.is_demo:
-            msg = "Changing the password is not allowed for the demo account."
+            msg = _t("Changing the password is not allowed for the demo account.")
             self.add_error("new_password2", msg)
         return cleaned_data
 
@@ -113,7 +113,7 @@ class NotificationSettingsForm(forms.ModelForm):
 
         for url in urls:
             if not apobj.add(url):
-                message = f"'{url}' is not a valid Apprise URL."
+                message = _t("'%(url)s' is not a valid Apprise URL.") % {"url": url}
                 raise ValidationError(message)
 
         return notification_urls

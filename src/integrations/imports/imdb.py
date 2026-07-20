@@ -12,6 +12,7 @@ from app.models import MediaTypes, Sources, Status
 from app.providers.services import ProviderAPIError
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
+from django.utils.translation import gettext as _t
 
 logger = logging.getLogger(__name__)
 
@@ -79,7 +80,7 @@ class IMDBImporter:
         try:
             decoded_file = self.file.read().decode("utf-8").splitlines()
         except UnicodeDecodeError as e:
-            msg = "Invalid file format. Please upload a CSV file."
+            msg = _t("Invalid file format. Please upload a CSV file.")
             raise MediaImportError(msg) from e
 
         reader = DictReader(decoded_file)
@@ -126,7 +127,9 @@ class IMDBImporter:
         title = row.get("Title", "").strip()
 
         if not imdb_id:
-            self.warnings.append(f"{title}: Invalid or missing IMDB ID")
+            self.warnings.append(
+                _t("%(title)s: Invalid or missing IMDB ID") % {"title": title},
+            )
             return
 
         title_type = row.get("Title Type", "").strip()
@@ -134,11 +137,13 @@ class IMDBImporter:
         if not self._is_supported_type(title_type):
             if title_type in UNSUPPORTED_TYPES:
                 self.warnings.append(
-                    f"{title}: Unsupported title type '{title_type}' - skipped",
+                    _t("%(title)s: Unsupported title type '%(type)s' - skipped")
+                    % {"title": title, "type": title_type},
                 )
             else:
                 self.warnings.append(
-                    f"{title}: Unknown title type '{title_type}' - skipped",
+                    _t("%(title)s: Unknown title type '%(type)s' - skipped")
+                    % {"title": title, "type": title_type},
                 )
             return
 
@@ -146,7 +151,8 @@ class IMDBImporter:
 
         if not tmdb_data:
             self.warnings.append(
-                f"{title}: Couldn't find a match in {Sources.TMDB.label}",
+                _t("%(title)s: Couldn't find a match in %(source)s")
+                % {"title": title, "source": Sources.TMDB.label},
             )
             return
 
@@ -198,8 +204,11 @@ class IMDBImporter:
                 titles = media_id_titles[media_id]
                 title_list = helpers.join_with_commas_and(titles)
                 self.warnings.append(
-                    f"{title_list}: They were matched to the same TMDB ID {media_id} "
-                    "- none imported",
+                    _t(
+                        "%(title_list)s: They were matched to the same TMDB ID "
+                        "%(media_id)s - none imported",
+                    )
+                    % {"title_list": title_list, "media_id": media_id},
                 )
 
     def _extract_imdb_id(self, row):
