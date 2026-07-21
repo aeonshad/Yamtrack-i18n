@@ -21,7 +21,7 @@ from integrations.imports import (
     yamtrack,
 )
 from django.utils.translation import gettext as gettext
-
+from django.utils.translation import override
 logger = logging.getLogger(__name__)
 ERROR_TITLE = "\n\n\n Couldn't import the following media: \n\n"
 
@@ -61,35 +61,37 @@ def import_media(
     user_id,
     mode,
     oauth_username=None,
+    language=None,
     **kwargs,
 ):
     """Handle the import process for different media services."""
     user = get_user_model().objects.get(id=user_id)
 
-    with disable_fetch_releases():
-        if oauth_username is None:
-            imported_counts, warnings = importer_func(
-                identifier,
-                user,
-                mode,
-                **kwargs,
-            )
-        else:
-            imported_counts, warnings = importer_func(
-                identifier,
-                user,
-                mode,
-                username=oauth_username,
-                **kwargs,
-            )
+    with override(language):
+        with disable_fetch_releases():
+            if oauth_username is None:
+                imported_counts, warnings = importer_func(
+                    identifier,
+                    user,
+                    mode,
+                    **kwargs,
+                )
+            else:
+                imported_counts, warnings = importer_func(
+                    identifier,
+                    user,
+                    mode,
+                    username=oauth_username,
+                    **kwargs,
+                )
 
-    events.tasks.reload_calendar.delay()
+        events.tasks.reload_calendar.delay()
 
-    return format_import_message(imported_counts, warnings)
+        return format_import_message(imported_counts, warnings)
 
 
 @shared_task(name="Import from Trakt")
-def import_trakt(user_id, mode, token=None, username=None, redirect_uri=None):
+def import_trakt(user_id, mode, token=None, username=None, redirect_uri=None, language=None,):
     """Celery task for importing media data from Trakt.
 
     Can import using either OAuth (token provided) or public username.
@@ -101,58 +103,59 @@ def import_trakt(user_id, mode, token=None, username=None, redirect_uri=None):
         mode,
         username,
         redirect_uri=redirect_uri,
+        language=language,
     )
 
 
 @shared_task(name="Import from SIMKL")
-def import_simkl(token, user_id, mode, username=None):  # noqa: ARG001
+def import_simkl(token, user_id, mode, username=None, language=None):  # noqa: ARG001
     """Celery task for importing media data from SIMKL."""
-    return import_media(simkl.importer, token, user_id, mode)
+    return import_media(simkl.importer, token, user_id, mode, language=language)
 
 
 @shared_task(name="Import from MyAnimeList")
-def import_mal(username, user_id, mode):
+def import_mal(username, user_id, mode, language=None):
     """Celery task for importing anime and manga data from MyAnimeList."""
-    return import_media(mal.importer, username, user_id, mode)
+    return import_media(mal.importer, username, user_id, mode, language=language)
 
 
 @shared_task(name="Import from AniList")
-def import_anilist(user_id, mode, token=None, username=None):
+def import_anilist(user_id, mode, token=None, username=None, language=None):
     """Celery task for importing media data from AniList."""
-    return import_media(anilist.importer, token, user_id, mode, username)
+    return import_media(anilist.importer, token, user_id, mode, username, language=language)
 
 
 @shared_task(name="Import from Kitsu")
-def import_kitsu(username, user_id, mode):
+def import_kitsu(username, user_id, mode, language=None):
     """Celery task for importing anime and manga data from Kitsu."""
-    return import_media(kitsu.importer, username, user_id, mode)
+    return import_media(kitsu.importer, username, user_id, mode, language=language)
 
 
 @shared_task(name="Import from Yamtrack")
-def import_yamtrack(file, user_id, mode):
+def import_yamtrack(file, user_id, mode, language=None):
     """Celery task for importing media data from Yamtrack."""
-    return import_media(yamtrack.importer, file, user_id, mode)
+    return import_media(yamtrack.importer, file, user_id, mode, language=language)
 
 
 @shared_task(name="Import from HowLongToBeat")
-def import_hltb(file, user_id, mode):
+def import_hltb(file, user_id, mode, language=None):
     """Celery task for importing media data from HowLongToBeat."""
-    return import_media(hltb.importer, file, user_id, mode)
+    return import_media(hltb.importer, file, user_id, mode, language=language)
 
 
 @shared_task(name="Import from Steam")
-def import_steam(username, user_id, mode):
+def import_steam(username, user_id, mode, language=None):
     """Celery task for importing game data from Steam."""
-    return import_media(steam.importer, username, user_id, mode)
+    return import_media(steam.importer, username, user_id, mode, language=language)
 
 
 @shared_task(name="Import from IMDB")
-def import_imdb(file, user_id, mode):
+def import_imdb(file, user_id, mode, language=None):
     """Celery task for importing media data from IMDB."""
-    return import_media(imdb.importer, file, user_id, mode)
+    return import_media(imdb.importer, file, user_id, mode, language=language)
 
 
 @shared_task(name="Import from GoodReads")
-def import_goodreads(file, user_id, mode):
+def import_goodreads(file, user_id, mode, language=None):
     """Celery task for importing media data from GoodReads."""
-    return import_media(goodreads.importer, file, user_id, mode)
+    return import_media(goodreads.importer, file, user_id, mode, language=language)

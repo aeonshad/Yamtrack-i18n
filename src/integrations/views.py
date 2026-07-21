@@ -22,6 +22,7 @@ from integrations import exports, tasks
 from integrations.imports import anilist, helpers, simkl, trakt
 from integrations.webhooks import emby, jellyfin, plex
 from django.utils.translation import gettext as gettext
+from django.utils.translation import get_language
 
 logger = logging.getLogger(__name__)
 
@@ -87,6 +88,7 @@ def import_trakt_private(request):
             mode=mode,
             username=oauth_callback["username"],
             redirect_uri=redirect_uri,
+            language=get_language(),
         )
         messages.info(request, gettext("The task to import media from Trakt has been queued."))
     else:
@@ -121,6 +123,7 @@ def import_trakt_public(request):
             user_id=request.user.id,
             mode=mode,
             username=username,
+            language=get_language(),
         )
         messages.info(request, gettext("The task to import media from Trakt has been queued."))
     else:
@@ -178,7 +181,7 @@ def import_simkl_private(request):
     import_time = request.session[state_token]["time"]
 
     if frequency == "once":
-        tasks.import_simkl.delay(token=enc_token, user_id=request.user.id, mode=mode)
+        tasks.import_simkl.delay(token=enc_token, user_id=request.user.id, mode=mode, language=get_language())
         messages.info(request, gettext("The task to import media from Simkl has been queued."))
     else:
         helpers.create_import_schedule(
@@ -206,7 +209,7 @@ def import_mal(request):
     frequency = request.POST["frequency"]
 
     if frequency == "once":
-        tasks.import_mal.delay(username=username, user_id=request.user.id, mode=mode)
+        tasks.import_mal.delay(username=username, user_id=request.user.id, mode=mode, language=get_language())
         messages.info(
             request,
             gettext("The task to import media from MyAnimeList has been queued."),
@@ -277,6 +280,7 @@ def import_anilist_private(request):
             mode=mode,
             username=username,
             token=enc_token,
+            language=get_language(),
         )
         messages.info(request, gettext("AniList import queued."))
     else:
@@ -309,6 +313,7 @@ def import_anilist_public(request):
             user_id=request.user.id,
             mode=mode,
             username=username,
+            language=get_language(),
         )
         messages.info(request, gettext("AniList import queued."))
     else:
@@ -335,7 +340,7 @@ def import_kitsu(request):
     frequency = request.POST["frequency"]
 
     if frequency == "once":
-        tasks.import_kitsu.delay(username=kitsu_id, user_id=request.user.id, mode=mode)
+        tasks.import_kitsu.delay(username=kitsu_id, user_id=request.user.id, mode=mode, language=get_language())
         messages.info(request, gettext("The task to import media from Kitsu has been queued."))
     else:
         import_time = request.POST["time"]
@@ -364,6 +369,7 @@ def import_yamtrack(request):
         file=request.FILES["yamtrack_csv"],
         user_id=request.user.id,
         mode=mode,
+        language=get_language(),
     )
     messages.info(
         request,
@@ -386,6 +392,7 @@ def import_hltb(request):
         file=request.FILES["hltb_csv"],
         user_id=request.user.id,
         mode=mode,
+        language=get_language(),
     )
     messages.info(
         request,
@@ -406,7 +413,7 @@ def import_steam(request):
     frequency = request.POST["frequency"]
 
     if frequency == "once":
-        tasks.import_steam.delay(username=steam_id, user_id=request.user.id, mode=mode)
+        tasks.import_steam.delay(username=steam_id, user_id=request.user.id, mode=mode, language=get_language())
         messages.info(request, gettext("The task to import media from Steam has been queued."))
     else:
         import_time = request.POST["time"]
@@ -434,6 +441,7 @@ def import_imdb(request):
         file=request.FILES["imdb_csv"],
         user_id=request.user.id,
         mode=mode,
+        language=get_language(),
     )
     messages.info(
         request,
@@ -456,6 +464,7 @@ def import_goodreads(request):
         file=request.FILES["goodreads_csv"],
         user_id=request.user.id,
         mode=mode,
+        language=get_language(),
     )
     messages.info(
         request,
