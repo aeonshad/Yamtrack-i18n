@@ -52,5 +52,13 @@ def ui_labels(request):
                     "Dropped": _("Dropped"),
                 },
             },
+            "button": {
+                "read_more": _("Read More"),
+                "show_less": _("Show Less"),
+                "show_failed_items": _("Show failed items"),
+                "hide_failed_items": _("Hide failed items"),
+                "show_traceback": _("Show traceback"),
+                "hide_traceback": _("Hide traceback"),
+            },
         }
     }

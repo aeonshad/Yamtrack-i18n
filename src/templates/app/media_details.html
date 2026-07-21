@@ -120,7 +120,7 @@
           <button x-show="isClamped"
                   @click="isExpanded = !isExpanded"
                   class="text-indigo-400 hover:text-indigo-300 text-sm mt-2 focus:outline-none transition-colors cursor-pointer">
-            <span x-text="isExpanded ? '{% trans "Show less" %}' : '{% trans "Read more" %}'"></span>
+            <span x-text="isExpanded ? '{{ ui_labels.button.show_less|escapejs }}' : '{{ ui_labels.button.read_more|escapejs }}'"></span>
           </button>
         </div>
 
@@ -140,7 +140,7 @@
             <button x-show="isClamped"
                     @click="isExpanded = !isExpanded"
                     class="text-indigo-400 hover:text-indigo-300 text-xs mt-1 focus:outline-none transition-colors cursor-pointer">
-              <span x-text="isExpanded ? 'Show less' : 'Read more'"></span>
+              <span x-text="isExpanded ? '{{ ui_labels.button.show_less|escapejs }}' : '{{ ui_labels.button.read_more|escapejs }}'"></span>
             </button>
           </div>
         {% endif %}
@@ -360,7 +360,7 @@
                             <button x-show="isClamped"
                                     @click="isExpanded = !isExpanded"
                                     class="text-indigo-400 hover:text-indigo-300 text-xs mt-1 focus:outline-none transition-colors cursor-pointer">
-                              <span x-text="isExpanded ? 'Show less' : 'Read more'"></span>
+                              <span x-text="isExpanded ? '{{ ui_labels.button.show_less|escapejs }}' : '{{ ui_labels.button.read_more|escapejs }}'"></span>
                             </button>
                           </div>
                         </div>
@@ -551,7 +551,7 @@
                 {% if name == "dlcs" %}
                   {% trans "DLCs" %}
                 {% else %}
-                  {{ name|no_underscore|title }}
+                  {{ name|translate_media_details|title }}
                 {% endif %}
               </h2>
               <div class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4">
@@ -603,7 +603,11 @@
                               :class="{ 'blur': obfuscated, 'cursor-pointer': obfuscated, 'cursor-text': !obfuscated }"
                               @click="obfuscated = false">{{ episode.title }}</h2>
                           <p class="text-sm text-gray-400">
-                            {% trans "Episode" %} {{ episode.episode_number }} • {{ episode.air_date|iso_date_format:request.user|default_if_none:"Unknown air date" }}
+                            {% if episode.air_date %}
+                                {% trans "Episode" %} {{ episode.episode_number }} • {{ episode.air_date|iso_date_format:request.user }}
+                            {% else %}
+                                {% trans "Episode" %} {{ episode.episode_number }} • {% trans "Unknown air date" %}
+                            {% endif %}
                             {% if episode.runtime %}• {{ episode.runtime }}{% endif %}
                           </p>
                         </div>
