@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.cache import cache
-
+from django.utils.translation import gettext_lazy as gettext
 from app import helpers
 from app.models import MediaTypes, Sources
 from app.providers import services
@@ -175,7 +175,7 @@ def get_image(response):
 def get_synopsis(response):
     """Return the synopsis."""
     if not response.get("description"):
-        return "No synopsis available"
+        return gettext("No synopsis available.")
 
     soup = BeautifulSoup(response["description"], "html.parser")
     text = soup.get_text(separator=" ")

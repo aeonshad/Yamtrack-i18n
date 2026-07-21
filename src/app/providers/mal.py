@@ -5,7 +5,7 @@ from zoneinfo import ZoneInfo
 import requests
 from django.conf import settings
 from django.core.cache import cache
-
+from django.utils.translation import gettext_lazy as gettext
 from app import helpers
 from app.models import MediaTypes, Sources
 from app.providers import services
@@ -260,7 +260,7 @@ def get_synopsis(response):
     # when no synopsis, value from response is empty string
     # e.g manga: 160219
     if response["synopsis"] == "":
-        return "No synopsis available."
+        return gettext("No synopsis available.")
     return response["synopsis"]
 
 

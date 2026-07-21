@@ -5,7 +5,7 @@ import requests
 from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
-
+from django.utils.translation import gettext_lazy as gettext
 from app import helpers
 from app.models import MediaTypes, Sources
 from app.providers import services
@@ -345,7 +345,7 @@ def game(media_id):
             "title": game_response["name"],
             "max_progress": None,
             "image": get_image_url(game_response),
-            "synopsis": game_response.get("summary", "No synopsis available."),
+            "synopsis": game_response.get("summary", gettext("No synopsis available.")),
             "genres": get_list(game_response, "genres"),
             "score": get_score(game_response),
             "score_count": game_response.get("total_rating_count"),

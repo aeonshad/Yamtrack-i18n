@@ -1,6 +1,6 @@
 from app import models
 from app.models import MediaTypes, Sources
-
+from django.utils.translation import gettext_lazy as gettext
 
 def metadata(media_id, media_type):
     """Return the metadata for a manual media item."""
@@ -16,7 +16,7 @@ def metadata(media_id, media_type):
         "title": item.title,
         "max_progress": None,
         "image": item.image,
-        "synopsis": "No synopsis available.",
+        "synopsis": gettext("No synopsis available."),
         "score": None,
         "score_count": None,
         "details": {},
@@ -147,7 +147,7 @@ def process_episodes(season_metadata, episodes_in_db):
             "air_date": episode["air_date"],
             "image": episode["image"],
             "title": episode["title"],
-            "overview": "No synopsis available.",
+            "overview": gettext("No synopsis available."),
             "history": tracked_episodes.get(episode_number, []),
         }
         episodes_metadata.append(episode_data)

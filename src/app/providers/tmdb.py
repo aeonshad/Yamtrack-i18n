@@ -5,7 +5,7 @@ import requests
 from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
-
+from django.utils.translation import gettext_lazy as gettext
 from app import helpers
 from app.models import MediaTypes, Sources
 from app.providers import services
@@ -546,7 +546,7 @@ def get_synopsis(text):
     # when unknown synopsis, value from response is empty string
     # e.g movie: 445290
     if text == "":
-        return "No synopsis available."
+        return gettext("No synopsis available.")
     return text
 
 

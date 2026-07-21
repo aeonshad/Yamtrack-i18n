@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.cache import cache
-
+from django.utils.translation import gettext_lazy as gettext
 from app import helpers
 from app.models import MediaTypes, Sources
 from app.providers import services
@@ -211,23 +211,26 @@ def get_cover_image_url(response):
 
 
 def get_description(response_book, response_work):
+    DEFAULT_SYNOPSIS = "No synopsis available."
     """Extract and clean up the book description."""
     if "description" in response_book:
         description = response_book["description"]
     elif "description" in response_work:
         description = response_work["description"]
     else:
-        description = "No synopsis available."
+        description = DEFAULT_SYNOPSIS
 
     # sometimes the description is a dict
     # like {'type': '/type/text', 'value': '...'}
     if isinstance(description, dict):
         description = description["value"]
 
-    if description != "No synopsis available.":
+    if description != DEFAULT_SYNOPSIS:
         soup = BeautifulSoup(description, "html.parser")
         text = soup.get_text(separator=" ")
         description = " ".join(text.split())
+    else:
+        description = gettext(DEFAULT_SYNOPSIS)
 
     return description
 

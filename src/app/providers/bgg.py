@@ -9,7 +9,7 @@ import logging
 import requests
 from django.conf import settings
 from django.core.cache import cache
-
+from django.utils.translation import gettext_lazy as gettext
 from app import helpers
 from app.models import MediaTypes, Sources
 from app.providers import services
@@ -206,7 +206,7 @@ def get_description(item):
     desc_elem = item.find("description")
     if desc_elem is not None and desc_elem.text:
         return desc_elem.text
-    return "No synopsis available"
+    return gettext("No synopsis available.")
 
 
 def get_year(item):
