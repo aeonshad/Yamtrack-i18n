@@ -14,7 +14,7 @@ from app.models import MediaTypes, Sources, Status
 from app.providers import services
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -49,7 +49,7 @@ def handle_oauth_callback(request, redirect_uri=None):
         )
     except services.ProviderAPIError as error:
         if error.status_code == requests.codes.unauthorized:
-            msg = _t("Invalid Trakt secret key.")
+            msg = gettext("Invalid Trakt secret key.")
             raise MediaImportError(msg) from error
         raise
 
@@ -79,7 +79,7 @@ def get_username_from_oauth(access_token):
         )
     except services.ProviderAPIError as error:
         if error.status_code == requests.codes.unauthorized:
-            msg = _t("Invalid Trakt secret key.")
+            msg = gettext("Invalid Trakt secret key.")
             raise MediaImportError(msg) from error
         raise
 
@@ -114,7 +114,7 @@ def get_access_token(encrypted_refresh_token, redirect_uri=None):
         )
     except services.ProviderAPIError as error:
         if error.status_code == requests.codes.unauthorized:
-            msg = _t("Invalid Trakt secret key.")
+            msg = gettext("Invalid Trakt secret key.")
             raise MediaImportError(msg) from error
         raise
 
@@ -253,14 +253,14 @@ class TraktImporter:
                 page_data = self._make_api_request(url)
             except requests.exceptions.HTTPError as error:
                 if error.response.status_code == requests.codes.not_found:
-                    msg = _t(
+                    msg = gettext(
                         "User slug %(username)s not found. "
                         "User slug can be found in your Trakt profile URL.",
                     ) % {"username": self.username}
                     raise MediaImportError(msg) from error
 
                 if error.response.status_code == requests.codes.unauthorized:
-                    msg = _t("This account is set to private, use OAuth import instead.",)
+                    msg = gettext("This account is set to private, use OAuth import instead.",)
                     raise MediaImportError(msg) from error
                 raise
 
@@ -326,7 +326,7 @@ class TraktImporter:
             return str(entry_data["ids"]["tmdb"])
 
         self.warnings.append(
-            _t("%(title)s: No %(source)s ID found.")
+            gettext("%(title)s: No %(source)s ID found.")
             % {"title": entry_data["title"], "source": Sources.TMDB.label},
         )
         return None
@@ -349,7 +349,7 @@ class TraktImporter:
                 if media_type == MediaTypes.SEASON.value:
                     title = f"{title} S{season_number}"
                 self.warnings.append(
-                    _t("%(title)s: not found in %(source)s with ID %(id)s.")
+                    gettext("%(title)s: not found in %(source)s with ID %(id)s.")
                     % {"title": title, "source": Sources.TMDB.label, "id": tmdb_id},
                 )
                 return None
@@ -481,7 +481,7 @@ class TraktImporter:
         if not episode_exists:
             item_identifier = f"{show['title']} S{season_number}E{episode_number}"
             self.warnings.append(
-                _t("%(title)s: not found in %(source)s with ID %(id)s.")
+                gettext("%(title)s: not found in %(source)s with ID %(id)s.")
                 % {
                     "title": item_identifier,
                     "source": Sources.TMDB.label,

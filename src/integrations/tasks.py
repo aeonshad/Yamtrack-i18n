@@ -20,7 +20,7 @@ from integrations.imports import (
     trakt,
     yamtrack,
 )
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 ERROR_TITLE = "\n\n\n Couldn't import the following media: \n\n"
@@ -44,9 +44,9 @@ def format_import_message(imported_counts, warning_messages=None):
     parts = [p for p in parts if p is not None]
 
     if not parts:
-        info_message = _t("No media was imported.")
+        info_message = gettext("No media was imported.")
     else:
-        info_message = _t("Imported %(items)s.") % {
+        info_message = gettext("Imported %(items)s.") % {
             "items": helpers.join_with_commas_and(parts),
         }
 

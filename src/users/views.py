@@ -20,7 +20,7 @@ from users.models import (
     TimeFormatChoices,
     WeekStartDayChoices,
 )
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 from django.utils.translation import ngettext
 
 logger = logging.getLogger(__name__)
@@ -39,7 +39,7 @@ def account(request):
 
             if user_form.is_valid():
                 user_form.save()
-                messages.success(request, _t("Your profile has been updated!"))
+                messages.success(request, gettext("Your profile has been updated!"))
                 logger.info(
                     "Successful profile change for user: %s",
                     request.user.username,
@@ -64,7 +64,7 @@ def account(request):
                     request,
                     user,
                 )
-                messages.success(request, _t("Your password has been updated!"))
+                messages.success(request, gettext("Your password has been updated!"))
                 logger.info(
                     "Successful password change for user: %s",
                     request.user.username,
@@ -93,7 +93,7 @@ def notifications(request):
             form.save()
             messages.success(
                 request,
-                _t("Notification settings updated successfully!"),
+                gettext("Notification settings updated successfully!"),
             )
         else:
             for errors in form.errors.values():
@@ -193,7 +193,7 @@ def test_notification(request):
             if url.strip()
         ]
         if not notification_urls:
-            messages.error(request, _t("No notification URLs configured."))
+            messages.error(request, gettext("No notification URLs configured."))
             return redirect("notifications")
 
         for url in notification_urls:
@@ -201,17 +201,17 @@ def test_notification(request):
 
         # Send test notification
         result = apobj.notify(
-            title=_t("YamTrack Test Notification"),
-            body=_t(
+            title=gettext("YamTrack Test Notification"),
+            body=gettext(
                 "This is a test notification from YamTrack. "
                 "If you're seeing this, your notifications are working correctly!",
             ),
         )
 
         if result:
-            messages.success(request, _t("Test notification sent successfully!"))
+            messages.success(request, gettext("Test notification sent successfully!"))
         else:
-            messages.error(request, _t("Failed to send test notification."))
+            messages.error(request, gettext("Failed to send test notification."))
     except Exception:
         logger.exception("Error sending notification")
 
@@ -241,7 +241,7 @@ def preferences(request):
 
     # Prevent demo users from updating preferences
     if request.user.is_demo:
-        messages.error(request, _t("This section is view-only for demo accounts."))
+        messages.error(request, gettext("This section is view-only for demo accounts."))
         return redirect("preferences")
 
     # Process form submission
@@ -285,7 +285,7 @@ def preferences(request):
 
     # Save changes and redirect
     request.user.save()
-    messages.success(request, _t("Settings updated."))
+    messages.success(request, gettext("Settings updated."))
 
     return redirect("preferences")
 
@@ -331,9 +331,9 @@ def delete_import_schedule(request):
             kwargs__contains=f'"user_id": {request.user.id}',
         )
         task.delete()
-        messages.success(request, _t("Import schedule deleted."))
+        messages.success(request, gettext("Import schedule deleted."))
     except PeriodicTask.DoesNotExist:
-        messages.error(request, _t("Import schedule not found."))
+        messages.error(request, gettext("Import schedule not found."))
     return redirect("import_data")
 
 
@@ -343,7 +343,7 @@ def regenerate_token(request):
     while True:
         try:
             request.user.regenerate_token()
-            messages.success(request, _t("Token regenerated successfully."))
+            messages.success(request, gettext("Token regenerated successfully."))
             break
         except IntegrityError:
             continue
@@ -368,7 +368,7 @@ def update_plex_usernames(request):
     if cleaned_usernames != request.user.plex_usernames:
         request.user.plex_usernames = cleaned_usernames
         request.user.save(update_fields=["plex_usernames"])
-        messages.success(request, _t("Plex usernames updated successfully"))
+        messages.success(request, gettext("Plex usernames updated successfully"))
 
     return redirect("integrations")
 
@@ -388,7 +388,7 @@ def update_jellyfin_webhook_events(request):
             "jellyfin_mark_unplayed_enabled",
         ],
     )
-    messages.success(request, _t("Jellyfin webhook settings updated successfully"))
+    messages.success(request, gettext("Jellyfin webhook settings updated successfully"))
 
     return redirect("integrations")
 

@@ -17,7 +17,7 @@ from django.utils.dateparse import parse_date
 from django.utils.text import slugify
 from django.utils.timezone import datetime
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 from app import config, helpers, history_processor
 from app import statistics as stats
@@ -148,12 +148,12 @@ def media_list(request, username, media_type):
     else:
         # privacy check then media type check
         if target_user.profile_private:
-            msg = _t("User not found")
+            msg = gettext("User not found")
             raise Http404(msg)
 
         enabled_media_types = target_user.get_enabled_media_types()
         if not enabled_media_types:
-            msg = _t("User doesn't have any media types enabled")
+            msg = gettext("User doesn't have any media types enabled")
             raise Http404(msg)
 
         if media_type not in enabled_media_types:
@@ -407,7 +407,7 @@ def update_media_score(request, media_type, instance_id):
 def sync_metadata(request, source, media_type, media_id, season_number=None):
     """Refresh the metadata for a media item."""
     if source == Sources.MANUAL.value:
-        msg = _t("Manual items cannot be synced.")
+        msg = gettext("Manual items cannot be synced.")
         messages.error(request, msg)
         return HttpResponse(
             msg,
@@ -423,7 +423,7 @@ def sync_metadata(request, source, media_type, media_id, season_number=None):
     logger.debug("%s - Cache TTL for: %s", cache_key, ttl)
 
     if ttl is not None and ttl > (settings.CACHE_TIMEOUT - 3):
-        msg = _t("The data was recently synced, please wait a few seconds.")
+        msg = gettext("The data was recently synced, please wait a few seconds.")
         messages.error(request, msg)
         logger.error(msg)
     else:
@@ -501,7 +501,7 @@ def sync_metadata(request, source, media_type, media_id, season_number=None):
 
         messages.success(
             request,
-            _t("%(title)s was synced to %(source)s successfully.")
+            gettext("%(title)s was synced to %(source)s successfully.")
             % {"title": title, "source": Sources(source).label},
         )
 
@@ -746,7 +746,7 @@ def create_entry(request):
         logger.exception("%s already exists in the database.", media_name)
         messages.error(
             request,
-            _t("%(media_name)s already exists in the database.")
+            gettext("%(media_name)s already exists in the database.")
             % {"media_name": media_name},
         )
         return redirect("create_entry")
@@ -781,7 +781,7 @@ def create_entry(request):
     # Success message
     messages.success(
         request,
-        _t("%(item)s added successfully.") % {"item": item},
+        gettext("%(item)s added successfully.") % {"item": item},
     )
     logger.info("%s added successfully.", item)
 

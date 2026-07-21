@@ -1,6 +1,6 @@
 from django.apps import apps
 from django.template.defaultfilters import pluralize
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 from app import config, helpers
 from app.models import MediaTypes, Status
@@ -162,7 +162,7 @@ def apply_date_status_integration(changes, user):
         and status_change
         and status_change["new"] == Status.IN_PROGRESS.value
     ):
-        date_changes["start_date"]["description"] = _t("Started on %(date)s") % {
+        date_changes["start_date"]["description"] = gettext("Started on %(date)s") % {
             "date": app_tags.datetime_format(date_changes["start_date"]["new"], user),
         }
         changes["status_change"] = None
@@ -173,7 +173,7 @@ def apply_date_status_integration(changes, user):
         and status_change
         and status_change["new"] == Status.COMPLETED.value
     ):
-        date_changes["end_date"]["description"] = _t("Finished on %(date)s") % {
+        date_changes["end_date"]["description"] = gettext("Finished on %(date)s") % {
             "date": app_tags.datetime_format(date_changes["end_date"]["new"], user),
         }
         changes["status_change"] = None
@@ -198,11 +198,11 @@ def build_changes_list(changes, processed_entry):
 def _status_label_phrases():
     """Return the translated status labels."""
     return {
-        Status.IN_PROGRESS.value: _t("Marked as: in progress"),
-        Status.COMPLETED.value: _t("Marked as: completed"),
-        Status.PLANNING.value: _t("Marked as: planned"),
-        Status.DROPPED.value: _t("Marked as: dropped"),
-        Status.PAUSED.value: _t("Marked as: paused"),
+        Status.IN_PROGRESS.value: gettext("Marked as: in progress"),
+        Status.COMPLETED.value: gettext("Marked as: completed"),
+        Status.PLANNING.value: gettext("Marked as: planned"),
+        Status.DROPPED.value: gettext("Marked as: dropped"),
+        Status.PAUSED.value: gettext("Marked as: paused"),
     }
 
 
@@ -224,17 +224,17 @@ def format_description(field_name, old_value, new_value, media_type=None, user=N
                 return phrases[new_value]
 
         if field_name == "score":
-            return _t("Rated %(score)s/10") % {"score": new_value}
+            return gettext("Rated %(score)s/10") % {"score": new_value}
 
         if field_name == "progress" and media_type:
             verb = config.get_verb(media_type, past_tense=True)
             if media_type == MediaTypes.GAME.value:
-                return _t("%(verb)s for %(duration)s") % {
+                return gettext("%(verb)s for %(duration)s") % {
                     "verb": verb.title(),
                     "duration": helpers.minutes_to_hhmm(new_value),
                 }
             unit = config.get_unit(media_type, short=False).lower()
-            return _t("%(verb)s up to %(unit)s %(value)s") % {
+            return gettext("%(verb)s up to %(unit)s %(value)s") % {
                 "verb": verb.title(),
                 "unit": unit,
                 "value": new_value,
@@ -243,20 +243,20 @@ def format_description(field_name, old_value, new_value, media_type=None, user=N
         if field_name in ["start_date", "end_date"]:
             if field_name == "start_date":
                 return (
-                    _t("Started on %(date)s") % {"date": new_value}
+                    gettext("Started on %(date)s") % {"date": new_value}
                     if new_value
-                    else _t("Started without date")
+                    else gettext("Started without date")
                 )
             return (
-                _t("Finished on %(date)s") % {"date": new_value}
+                gettext("Finished on %(date)s") % {"date": new_value}
                 if new_value
-                else _t("Finished without date")
+                else gettext("Finished without date")
             )
 
         if field_name == "notes":
-            return _t("Added notes")
+            return gettext("Added notes")
 
-        return _t("Set %(field)s to %(value)s") % {
+        return gettext("Set %(field)s to %(value)s") % {
             "field": field_name.replace("_", " ").lower(),
             "value": new_value,
         }
@@ -268,34 +268,34 @@ def format_description(field_name, old_value, new_value, media_type=None, user=N
             (
                 Status.PLANNING.value,
                 Status.IN_PROGRESS.value,
-            ): _t("Started"),
+            ): gettext("Started"),
             (
                 Status.IN_PROGRESS.value,
                 Status.COMPLETED.value,
-            ): _t("Completed"),
+            ): gettext("Completed"),
             (
                 Status.IN_PROGRESS.value,
                 Status.PAUSED.value,
-            ): _t("Paused"),
+            ): gettext("Paused"),
             (
                 Status.PAUSED.value,
                 Status.IN_PROGRESS.value,
-            ): _t("Resumed"),
+            ): gettext("Resumed"),
             (
                 Status.IN_PROGRESS.value,
                 Status.DROPPED.value,
-            ): _t("Dropped"),
+            ): gettext("Dropped"),
         }
         return transitions.get(
             (old_value, new_value),
-            _t("Changed status from %(old)s to %(new)s")
+            gettext("Changed status from %(old)s to %(new)s")
             % {"old": old_value, "new": new_value},
         )
 
     if field_name == "score":
         if old_value == 0:
-            return _t("Rated %(score)s/10") % {"score": new_value}
-        return _t("Changed rating from %(old)s to %(new)s") % {
+            return gettext("Rated %(score)s/10") % {"score": new_value}
+        return gettext("Changed rating from %(old)s to %(new)s") % {
             "old": old_value,
             "new": new_value,
         }
@@ -306,10 +306,10 @@ def format_description(field_name, old_value, new_value, media_type=None, user=N
 
         if media_type == MediaTypes.GAME.value:
             if diff > 0:
-                return _t("Added %(duration)s of playtime") % {
+                return gettext("Added %(duration)s of playtime") % {
                     "duration": helpers.minutes_to_hhmm(diff_abs),
                 }
-            return _t("Removed %(duration)s of playtime") % {
+            return gettext("Removed %(duration)s of playtime") % {
                 "duration": helpers.minutes_to_hhmm(diff_abs),
             }
 
@@ -317,7 +317,7 @@ def format_description(field_name, old_value, new_value, media_type=None, user=N
             f"{config.get_unit(media_type, short=False).lower()}{pluralize(new_value)}"
         )
 
-        return _t("Progress set to %(value)s %(unit)s") % {
+        return gettext("Progress set to %(value)s %(unit)s") % {
             "value": new_value,
             "unit": unit,
         }
@@ -325,25 +325,25 @@ def format_description(field_name, old_value, new_value, media_type=None, user=N
     if field_name in ["start_date", "end_date"]:
         if field_name == "start_date":
             if not new_value:
-                return _t("Removed start date")
+                return gettext("Removed start date")
             if not old_value:
-                return _t("Started on %(date)s") % {"date": new_value}
-            return _t("Start date changed to %(date)s") % {"date": new_value}
+                return gettext("Started on %(date)s") % {"date": new_value}
+            return gettext("Start date changed to %(date)s") % {"date": new_value}
         if not new_value:
-            return _t("Removed end date")
+            return gettext("Removed end date")
         if not old_value:
-            return _t("Finished on %(date)s") % {"date": new_value}
-        return _t("End date changed to %(date)s") % {"date": new_value}
+            return gettext("Finished on %(date)s") % {"date": new_value}
+        return gettext("End date changed to %(date)s") % {"date": new_value}
 
     if field_name == "notes":
         if not old_value:
-            return _t("Added notes")
+            return gettext("Added notes")
         if not new_value:
-            return _t("Removed notes")
-        return _t("Updated notes")
+            return gettext("Removed notes")
+        return gettext("Updated notes")
 
     field_label = field_name.replace("_", " ").lower()
-    return _t("Updated %(field)s from %(old)s to %(new)s") % {
+    return gettext("Updated %(field)s from %(old)s to %(new)s") % {
         "field": field_label,
         "old": old_value,
         "new": new_value,

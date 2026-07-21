@@ -16,7 +16,7 @@ from events import tasks
 from events.models import Event
 from users.models import User, WeekStartDayChoices
 from django.utils import formats
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -115,7 +115,7 @@ def reload_calendar(request):
     tasks.reload_calendar.delay(request.user)
     messages.info(
         request,
-        _t("The task to refresh upcoming releases has been queued."),
+        gettext("The task to refresh upcoming releases has been queued."),
     )
     return redirect("calendar")
 

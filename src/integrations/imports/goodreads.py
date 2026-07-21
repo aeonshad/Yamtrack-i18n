@@ -11,7 +11,7 @@ from app.models import MediaTypes, Sources, Status
 from app.providers import services
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +58,7 @@ class GoodReadsImporter:
         try:
             decoded_file = self.file.read().decode("utf-8").splitlines()
         except UnicodeDecodeError as e:
-            msg = _t("Invalid file format. Please upload a CSV file.")
+            msg = gettext("Invalid file format. Please upload a CSV file.")
             raise MediaImportError(msg) from e
 
         reader = DictReader(decoded_file)
@@ -73,7 +73,7 @@ class GoodReadsImporter:
                     row_description,
                     error,
                 )
-                error_msg = _t("Error processing entry: %(row)s - %(error)s") % {
+                error_msg = gettext("Error processing entry: %(row)s - %(error)s") % {
                     "row": row_description,
                     "error": error,
                 }
@@ -118,7 +118,7 @@ class GoodReadsImporter:
 
         if not book:
             self.warnings.append(
-                _t(
+                gettext(
                     "%(title)s: Couldn't find this book via Title or ISBN13 "
                     "in %(source)s",
                 )

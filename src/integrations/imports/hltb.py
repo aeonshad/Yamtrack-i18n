@@ -11,7 +11,7 @@ import app.providers
 from app.models import MediaTypes, Sources, Status
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +58,7 @@ class HowLongToBeatImporter:
         try:
             decoded_file = self.file.read().decode("utf-8").splitlines()
         except UnicodeDecodeError as e:
-            msg = _t("Invalid file format. Please upload a CSV file.")
+            msg = gettext("Invalid file format. Please upload a CSV file.")
             raise MediaImportError(msg) from e
 
         reader = DictReader(decoded_file)
@@ -103,7 +103,7 @@ class HowLongToBeatImporter:
         game = self._search_game(row)
         if not game:
             self.warnings.append(
-                _t("%(title)s: Couldn't find a game with this title in %(source)s")
+                gettext("%(title)s: Couldn't find a game with this title in %(source)s")
                 % {"title": row["Title"], "source": Sources.IGDB.label},
             )
             return
@@ -147,7 +147,7 @@ class HowLongToBeatImporter:
                 titles = media_id_titles[media_id]
                 title_list = helpers.join_with_commas_and(titles)
                 self.warnings.append(
-                    _t(
+                    gettext(
                         "%(title_list)s: They were matched to the same ID "
                         "%(media_id)s - none imported",
                     )

@@ -11,7 +11,7 @@ from app.providers import services
 from app.providers.igdb import ExternalGameSource, external_game
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +42,7 @@ class SteamImporter:
         self.api_key = settings.STEAM_API_KEY
 
         if not self.api_key:
-            msg = _t("Steam API key not configured in environment variables")
+            msg = gettext("Steam API key not configured in environment variables")
             raise MediaImportError(msg)
 
         self.existing_media = helpers.get_existing_media(user)
@@ -110,7 +110,7 @@ class SteamImporter:
                 response = services.api_request("STEAM", "GET", url, params=params)
 
                 if "response" not in response:
-                    msg = _t("Invalid response from Steam API")
+                    msg = gettext("Invalid response from Steam API")
                     raise MediaImportError(msg)
 
                 if "games" not in response["response"]:
@@ -142,18 +142,18 @@ class SteamImporter:
                         )
                         time.sleep(delay)
                         continue
-                    msg = _t("Steam API rate limit exceeded. Please try again later.")
+                    msg = gettext("Steam API rate limit exceeded. Please try again later.")
                     raise MediaImportError(msg) from e
                 if e.response.status_code == requests.codes.forbidden:
-                    msg = _t("Steam profile is private or invalid")
+                    msg = gettext("Steam profile is private or invalid")
                     raise MediaImportError(msg) from e
                 if e.response.status_code == requests.codes.bad_request:
-                    msg = _t("Bad request to Steam API. Please check the Steam ID.")
+                    msg = gettext("Bad request to Steam API. Please check the Steam ID.")
                     raise MediaImportError(msg) from e
                 if e.response.status_code == requests.codes.unauthorized:
-                    msg = _t("Invalid Steam API key")
+                    msg = gettext("Invalid Steam API key")
                     raise MediaImportError(msg) from e
-                msg = _t("Steam API error: %(status_code)s") % {
+                msg = gettext("Steam API error: %(status_code)s") % {
                     "status_code": e.response.status_code,
                 }
                 raise MediaImportError(msg) from e
@@ -180,7 +180,7 @@ class SteamImporter:
                     appid,
                 )
                 self.warnings.append(
-                    _t("%(name)s (%(appid)s): Couldn't find a match in %(source)s")
+                    gettext("%(name)s (%(appid)s): Couldn't find a match in %(source)s")
                     % {"name": name, "appid": appid, "source": Sources.IGDB.label},
                 )
                 return
@@ -229,7 +229,7 @@ class SteamImporter:
                 status=status,
                 score=None,
                 progress=playtime_forever,
-                notes=_t("Imported from Steam"),
+                notes=gettext("Imported from Steam"),
                 start_date=None,
                 end_date=None,
             )
@@ -250,14 +250,14 @@ class SteamImporter:
                 e,
             )
             self.warnings.append(
-                _t("%(name)s (%(appid)s): Couldn't find a match in %(source)s")
+                gettext("%(name)s (%(appid)s): Couldn't find a match in %(source)s")
                 % {"name": name, "appid": appid, "source": Sources.IGDB.label},
             )
 
         except (ValueError, KeyError, TypeError) as e:
             logger.warning("Failed to process Steam game %s (%s): %s", name, appid, e)
             self.warnings.append(
-                _t("%(name)s (%(appid)s): %(error)s")
+                gettext("%(name)s (%(appid)s): %(error)s")
                 % {"name": name, "appid": appid, "error": e},
             )
 

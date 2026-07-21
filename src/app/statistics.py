@@ -21,7 +21,7 @@ from users.models import WeekStartDayChoices
 
 logger = logging.getLogger(__name__)
 
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 from django.utils import formats
 from datetime import timedelta
 
@@ -571,7 +571,7 @@ def calculate_day_of_week_stats(date_counts, start_date):
         if date < start_date:
             continue
         if date_counts[date] > 0:
-            day_name = _t(calendar.day_name[date.weekday()])  # Get full day name
+            day_name = gettext(calendar.day_name[date.weekday()])  # Get full day name
             day_counts[day_name] += 1
             total_active_days += 1
 

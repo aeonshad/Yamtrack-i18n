@@ -13,7 +13,7 @@ from app.providers import services
 from app.templatetags import app_tags
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +60,7 @@ class YamtrackImporter:
         try:
             decoded_file = self.file.read().decode("utf-8").splitlines()
         except UnicodeDecodeError as e:
-            msg = _t("Invalid file format. Please upload a CSV file.")
+            msg = gettext("Invalid file format. Please upload a CSV file.")
             raise MediaImportError(msg) from e
 
         reader = DictReader(decoded_file)
@@ -69,7 +69,7 @@ class YamtrackImporter:
             try:
                 self._process_row(row)
             except services.ProviderAPIError as error:
-                error_msg = _t(
+                error_msg = gettext(
                     "Error processing entry with ID %(media_id)s "
                     "(%(media_type)s): %(error)s",
                 ) % {
@@ -163,7 +163,7 @@ class YamtrackImporter:
             self.bulk_media[media_type].append(form.instance)
         else:
             self.warnings.append(
-                _t("%(title)s (%(media_type)s): %(errors)s")
+                gettext("%(title)s (%(media_type)s): %(errors)s")
                 % {
                     "title": row["title"],
                     "media_type": media_type,

@@ -12,7 +12,7 @@ import app
 from app.models import MediaTypes, Sources, Status
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -88,7 +88,7 @@ class MyAnimeListImporter:
             response = self._get_whole_response(url, params)
         except requests.exceptions.HTTPError as error:
             if error.response.status_code == requests.codes.not_found:
-                msg = _t("User %(username)s not found.") % {"username": self.username}
+                msg = gettext("User %(username)s not found.") % {"username": self.username}
                 raise MediaImportError(msg) from error
             raise
 

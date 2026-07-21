@@ -11,7 +11,7 @@ import app
 from app.models import MediaTypes, Sources, Status
 from integrations.imports import helpers
 from integrations.imports.helpers import MediaImportError, MediaImportUnexpectedError
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -95,10 +95,10 @@ class KitsuImporter:
         )
 
         if not response["data"]:
-            msg = _t("User %(username)s not found.") % {"username": username}
+            msg = gettext("User %(username)s not found.") % {"username": username}
             raise MediaImportError(msg)
         if len(response["data"]) > 1:
-            msg = _t(
+            msg = gettext(
                 "Multiple users found for %(username)s, please use your user ID. "
                 "User IDs can be found in the URL when viewing your Kitsu profile.",
             ) % {"username": username}
@@ -248,7 +248,7 @@ class KitsuImporter:
         """Fetch media data from Kitsu related URL when relationship data is null."""
         related_url = relationship["links"]["related"]
         if not related_url:
-            msg = _t(
+            msg = gettext(
                 "Could not import unknown item - missing media data from Kitsu. "
                 "Relationship: %(relationship)s",
             ) % {"relationship": relationship}
@@ -316,7 +316,7 @@ class KitsuImporter:
         # Farmagia (49333) shows MAL external_id == "anime"
         if not media_id or not media_id.isdigit():
             media_title = kitsu_metadata["attributes"]["canonicalTitle"]
-            msg = _t("%(title)s: No valid external ID found.") % {"title": media_title}
+            msg = gettext("%(title)s: No valid external ID found.") % {"title": media_title}
             raise MediaImportError(msg)
 
         image_url = self._get_image_url(kitsu_metadata)

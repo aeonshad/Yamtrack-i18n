@@ -15,7 +15,7 @@ from simple_history.utils import bulk_create_with_history, bulk_update_with_hist
 
 import app
 from app.models import MediaTypes
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 logger = logging.getLogger(__name__)
 
@@ -240,14 +240,14 @@ def create_import_schedule(
             .time()
         )
     except ValueError:
-        messages.error(request, _t("Invalid import time."))
+        messages.error(request, gettext("Invalid import time."))
         return
 
     task_name = f"Import from {source} for {username} at {import_time} {frequency}"
     if PeriodicTask.objects.filter(name=task_name).exists():
         messages.error(
             request,
-            _t("The same import task is already scheduled."),
+            gettext("The same import task is already scheduled."),
         )
         return
 
@@ -279,7 +279,7 @@ def create_import_schedule(
     )
     messages.success(
         request,
-        _t("%(source)s import task scheduled.") % {"source": source},
+        gettext("%(source)s import task scheduled.") % {"source": source},
     )
 
 
@@ -289,7 +289,7 @@ def join_with_commas_and(items):
         return ""
     if len(items) == 1:
         return items[0]
-    return _t("%(comma_items)s and %(last_item)s") % {
+    return gettext("%(comma_items)s and %(last_item)s") % {
         "comma_items": ", ".join(items[:-1]),
         "last_item": items[-1],
     }

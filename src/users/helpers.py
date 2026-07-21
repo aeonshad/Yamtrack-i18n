@@ -6,7 +6,7 @@ import croniter
 from django.utils import timezone
 
 import integrations
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 
 
 def process_task_result(task):
@@ -17,10 +17,10 @@ def process_task_result(task):
             task.summary = result_json["exc_message"][0]
             task.errors = task.traceback
         else:
-            task.summary = _t("Unexpected error occurred while processing the task.")
+            task.summary = gettext("Unexpected error occurred while processing the task.")
             task.errors = task.traceback
     elif task.status == "STARTED":
-        task.summary = _t("This task is currently running.")
+        task.summary = gettext("This task is currently running.")
         task.errors = None
     elif task.status == "SUCCESS":
         result_json = json.loads(task.result)
@@ -37,7 +37,7 @@ def process_task_result(task):
             task.summary = result_json.strip()
             task.errors = None
     elif task.status == "PENDING":
-        task.summary = _t("This task has been queued and is waiting to run.")
+        task.summary = gettext("This task has been queued and is waiting to run.")
         task.errors = None
 
     return task

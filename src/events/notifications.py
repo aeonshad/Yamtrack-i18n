@@ -9,7 +9,7 @@ from django.utils import timezone
 
 from app.models import TV, MediaTypes, Season
 from app.templatetags import app_tags
-from django.utils.translation import gettext as _t
+from django.utils.translation import gettext as gettext
 from events.models import INACTIVE_TRACKING_STATUSES, Event
 
 logger = logging.getLogger(__name__)
@@ -48,7 +48,7 @@ def send_releases():
     result = send_notifications(
         events=events,
         users=users,
-        title=_t("🔔 YamTrack: New Releases Available! 🔔"),
+        title=gettext("🔔 YamTrack: New Releases Available! 🔔"),
     )
 
     # Mark events as notified
@@ -103,7 +103,7 @@ def send_daily_digest():
     if not events.exists():
         return "No releases scheduled for today"
 
-    title = _t("📆 YamTrack: Today's Releases 📆")
+    title = gettext("📆 YamTrack: Today's Releases 📆")
 
     result = send_notifications(
         events=events,
@@ -432,7 +432,7 @@ def format_notification(releases):
 
         # Add a header for each media type with icon
         if media_type == MediaTypes.SEASON.value:
-            notification_body.append(f"{icon}  {_t('TV Shows')}")
+            notification_body.append(f"{icon}  {gettext('TV Shows')}")
         else:
             notification_body.append(
                 f"{icon}  {MediaTypes(media_type).label.upper()}",
@@ -451,7 +451,7 @@ def format_notification(releases):
         # Add a blank line between media types
         notification_body.append("")
 
-    notification_body.append(_t("Enjoy your media!"))
+    notification_body.append(gettext("Enjoy your media!"))
 
     return "\n".join(notification_body)
 

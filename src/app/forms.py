@@ -20,7 +20,7 @@ from app.models import (
     Sources,
 )
 
-from django.utils.translation import gettext_lazy as _t
+from django.utils.translation import gettext_lazy as gettext
 from django.utils.text import format_lazy
 
 def get_form_class(media_type):
@@ -89,7 +89,7 @@ class CustomDurationField(forms.CharField):
             self._validate_minutes(minutes)
             return hours * 60 + minutes
         except ValueError as e:
-            msg = _t("Invalid time format. Provide duration in hours (e.g., '5', '1.5'), hours and minutes (e.g., '5:30', '5h 30min'), or just minutes (e.g., '30min').")  # noqa: E501
+            msg = gettext("Invalid time format. Provide duration in hours (e.g., '5', '1.5'), hours and minutes (e.g., '5:30', '5h 30min'), or just minutes (e.g., '30min').")  # noqa: E501
             raise forms.ValidationError(msg) from e
 
 
@@ -99,15 +99,15 @@ class ManualItemForm(forms.ModelForm):
     parent_tv = forms.ModelChoiceField(
         required=False,
         queryset=TV.objects.none(),
-        empty_label=_t("Select"),
-        label=_t("Parent TV Show"),
+        empty_label=gettext("Select"),
+        label=gettext("Parent TV Show"),
     )
 
     parent_season = forms.ModelChoiceField(
         required=False,
         queryset=Season.objects.none(),
-        empty_label=_t("Select"),
-        label=_t("Parent Season"),
+        empty_label=gettext("Select"),
+        label=gettext("Parent Season"),
     )
 
     class Meta:
@@ -156,7 +156,7 @@ class ManualItemForm(forms.ModelForm):
                 if not parent:
                     self.add_error(
                         "parent_tv",
-                        _t("Parent TV show is required for seasons"),
+                        gettext("Parent TV show is required for seasons"),
                     )
                     return cleaned_data
                 cleaned_data["title"] = parent.item.title
@@ -166,7 +166,7 @@ class ManualItemForm(forms.ModelForm):
                 if not parent:
                     self.add_error(
                         "parent_season",
-                        _t("Parent season is required for episodes"),
+                        gettext("Parent season is required for episodes"),
                     )
                     return cleaned_data
                 cleaned_data["title"] = parent.item.title
@@ -174,7 +174,7 @@ class ManualItemForm(forms.ModelForm):
         else:
             # For standalone media, title is required
             if not cleaned_data.get("title"):
-                self.add_error("title", _t("Title is required for this media type"))
+                self.add_error("title", gettext("Title is required for this media type"))
             cleaned_data["season_number"] = None
             cleaned_data["episode_number"] = None
 
@@ -231,7 +231,7 @@ class MediaForm(forms.ModelForm):
             if settings.TRACK_TIME
             else forms.DateInput(attrs={"type": "date"}),
             "notes": forms.Textarea(
-                attrs={"placeholder": _t("Add any notes or comments..."), "rows": "5"},
+                attrs={"placeholder": gettext("Add any notes or comments..."), "rows": "5"},
             ),
         }
 
@@ -246,7 +246,7 @@ class MangaForm(MediaForm):
         labels = {
             "progress": format_lazy(
                 "{} ({})",
-                _t("Progress"),
+                gettext("Progress"),
                 config.get_unit(MediaTypes.MANGA.value, short=False, plural=True),
             ),
         }
@@ -283,7 +283,7 @@ class GameForm(MediaForm):
     progress = CustomDurationField(
         required=False,
         widget=forms.TextInput(attrs={"placeholder": "hh:mm"}),
-        label=_t("Progress (Time Played)"),
+        label=gettext("Progress (Time Played)"),
     )
 
     class Meta(MediaForm.Meta):
@@ -302,7 +302,7 @@ class BookForm(MediaForm):
         labels = {
             "progress": format_lazy(
                 "{} ({})",
-                _t("Progress"),
+                gettext("Progress"),
                 config.get_unit(MediaTypes.BOOK.value, short=False, plural=True),
             ),
         }
@@ -318,7 +318,7 @@ class ComicForm(MediaForm):
         labels = {
             "progress": format_lazy(
                 "{} ({})",
-                _t("Progress"),
+                gettext("Progress"),
                 config.get_unit(MediaTypes.COMIC.value, short=False, plural=True),
             ),
         }
@@ -334,7 +334,7 @@ class BoardgameForm(MediaForm):
         labels = {
             "progress": format_lazy(
                 "{} ({})",
-                _t("Progress"),
+                gettext("Progress"),
                 config.get_unit(MediaTypes.BOARDGAME.value, short=False, plural=True),
             ),
         }
