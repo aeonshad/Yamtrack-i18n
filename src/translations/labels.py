@@ -47,6 +47,7 @@ def ui_labels(request):
                 "statuses": {
                     "Completed": _("Completed"),
                     "In Progress": _("In Progress"),
+                    "In progress": _("In Progress"),
                     "Planning": _("Planning"),
                     "Paused": _("Paused"),
                     "Dropped": _("Dropped"),
